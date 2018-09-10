@@ -1,0 +1,2809 @@
+				;file C:\Users\user1801\Desktop\HOLTEK\1070706\chaosTest0731\chaosTest0731.c
+				;1	// PROGRAM	: RGBV2.c								2018.0601
+				;2	// FUNCTION	: RGB LED Simple Control By BT			By Steven
+				;3	// Note: 				;4	//						   PA3(A)-->PA1(B),
+				;5	//						   GND(A)-->GND(B))
+				;6	#include <HT66F70A.h>
+				;7	#include "MyType.H"
+				;8	#define  KeyPort	_pg
+				;9	#define  KeyPortC	_pgc
+				;10	#define  KeyPortPU	_pgpu
+				;11	#define	_TX			_pa1							//				;12	#define	_TXC		_pac1
+				;13	#define	_RX			_pa3							//				;14	#define	_RXC		_pac3
+				;15	#define _Relay		_pd6
+				;16	#define _RelayC		_pdc6
+				;17	#define _RelayPU	_pdpu6
+				;18	#define	fSYS		8000000	
+				;19	#define	BaudRate	9600	
+				;20	#define	BITC		(fSYS/BaudRate)					//Bit Interval Time Constant
+				;21	void UARTTxData(u8);
+				;22	void delay(u16);
+				;23	double g1,g2,g3,g4,h1,h2,j1,j2,u1,u2,c1,c2,A,dx1,dx2,dx3,ax1,ax2,ax3,y1,y2,y3,y1n,y2n,y3n;
+				;24	void chaosMath();
+				;25	void doMath();
+				;26	void intiChaos();
+				;27	u8 ScanKey(void);
+				;28	volatile u8	RxData; 
+				;29	volatile _Bool b_RX;
+				;30	int switchCaseNum;
+				;31	struct SetIEEE754{
+				;32		unsigned s:1;
+				;33		u8 e;
+				;34		unsigned long m:23;
+				;35		};//32bit
+				;36	struct sendFormatIEEE754{
+				;37		unsigned k:2;
+				;38		unsigned j:3;
+				;39		unsigned i:3;
+				;40		unsigned h:3;
+				;41		unsigned g:3;
+				;42		unsigned f:3;
+				;43		unsigned e:3;
+				;44		unsigned d:3;
+				;45		unsigned c:3;
+				;46		unsigned b:3;
+				;47		unsigned a:3;
+				;48		};//32bit
+				;49	union IEEE754{
+				;50		//struct SetIEEE754 setByte;
+				;51		struct sendFormatIEEE754 Byte;
+				;52		u32 allBit;
+				;53		double Val;
+				;54	};
+				;55	volatile u8 key;
+				;56	volatile union IEEE754 u1Val;
+				;57	void main()
+				;58	{
+				@code .SECTION 'CODE'
+				include HT66F70A.inc
+0000	1F0B	clr     BP
+0001	2836	jmp     _main_startup1
+				@start .SECTION 'CODE'
+				_main_startup1:
+				@start .SECTION 'CODE'
+0036	0F00	mov     a, 0H
+0037	008B	mov     BP, a
+0038	2A12	jmp     _main
+				L0039:
+0039	5A10	rlca    rh[9]
+003A	5A16	rlca    rh[15]
+003B	5A8C	rlc     rh[5]
+003C	4091	mov     rh[10], a
+003D	5F16	clr     rh[15]
+003E	7390	set     rh[9].7
+003F	5091	sz      rh[10]
+0040	2844	jmp     L0044
+0041	5F0E	clr     rh[7]
+0042	5F0F	clr     rh[8]
+0043	5F10	clr     rh[9]
+				L0044:
+0044	5A0A	rlca    rh[3]
+0045	5A15	rlca    rh[14]
+0046	5A8C	rlc     rh[5]
+0047	408B	mov     rh[4], a
+0048	5F15	clr     rh[14]
+0049	738A	set     rh[3].7
+004A	508B	sz      rh[4]
+004B	0003	ret
+				L004C:
+004C	5F08	clr     rh[1]
+004D	5F09	clr     rh[2]
+004E	5F0A	clr     rh[3]
+				L004F:
+004F	5F15	clr     rh[14]
+0050	0003	ret
+				L0051:
+0051	2039	call    L0039
+0052	5F12	clr     rh[11]
+0053	5F13	clr     rh[12]
+0054	5F14	clr     rh[13]
+0055	5F17	clr     rh[16]
+0056	0F7A	mov     a, 7AH
+0057	4311	add     a, rh[10]
+0058	438B	addm    a, rh[4]
+0059	5B0C	rrca    rh[5]
+005A	448C	xorm    a, rh[5]
+005B	0F07	mov     a, 7H
+005C	4096	mov     rh[15], a
+				L005D:
+005D	5B90	rrc     rh[9]
+005E	5B8F	rrc     rh[8]
+005F	5B8E	rrc     rh[7]
+0060	380A	snz     C
+0061	286A	jmp     L006A
+0062	4708	mov     a, rh[1]
+0063	4392	addm    a, rh[11]
+0064	4709	mov     a, rh[2]
+0065	5393	adcm    a, rh[12]
+0066	470A	mov     a, rh[3]
+0067	5394	adcm    a, rh[13]
+0068	4715	mov     a, rh[14]
+0069	5397	adcm    a, rh[16]
+				L006A:
+006A	340A	clr     C
+006B	5A88	rlc     rh[1]
+006C	5A89	rlc     rh[2]
+006D	5A8A	rlc     rh[3]
+006E	5A95	rlc     rh[14]
+006F	5796	sdz     rh[15]
+0070	285D	jmp     L005D
+0071	0F11	mov     a, 11H
+0072	4096	mov     rh[15], a
+0073	2879	jmp     L0079
+				L0074:
+0074	340A	clr     C
+0075	5B97	rrc     rh[16]
+0076	5B94	rrc     rh[13]
+0077	5B93	rrc     rh[12]
+0078	5B92	rrc     rh[11]
+				L0079:
+0079	5B90	rrc     rh[9]
+007A	5B8F	rrc     rh[8]
+007B	5B8E	rrc     rh[7]
+007C	380A	snz     C
+007D	2886	jmp     L0086
+007E	4708	mov     a, rh[1]
+007F	4392	addm    a, rh[11]
+0080	4709	mov     a, rh[2]
+0081	5393	adcm    a, rh[12]
+0082	470A	mov     a, rh[3]
+0083	5394	adcm    a, rh[13]
+0084	4715	mov     a, rh[14]
+0085	5397	adcm    a, rh[16]
+				L0086:
+0086	5796	sdz     rh[15]
+0087	2874	jmp     L0074
+0088	4712	mov     a, rh[11]
+0089	4088	mov     rh[1], a
+008A	4713	mov     a, rh[12]
+008B	4089	mov     rh[2], a
+008C	4714	mov     a, rh[13]
+008D	408A	mov     rh[3], a
+008E	4717	mov     a, rh[16]
+008F	4095	mov     rh[14], a
+0090	290B	jmp     L010B
+				L0091:
+0091	2039	call    L0039
+0092	5F12	clr     rh[11]
+0093	5F13	clr     rh[12]
+0094	5F14	clr     rh[13]
+0095	5F17	clr     rh[16]
+0096	5091	sz      rh[10]
+0097	289A	jmp     L009A
+0098	710D	set     rh[6].2
+0099	28C4	jmp     L00C4
+				L009A:
+009A	500B	sza     rh[4]
+009B	289D	jmp     L009D
+009C	28C4	jmp     L00C4
+				L009D:
+009D	4211	sub     a, rh[10]
+009E	0B77	add     a, 77H
+009F	408B	mov     rh[4], a
+00A0	5B0C	rrca    rh[5]
+00A1	448C	xorm    a, rh[5]
+00A2	0F20	mov     a, 20H
+00A3	4091	mov     rh[10], a
+				L00A4:
+00A4	4708	mov     a, rh[1]
+00A5	420E	sub     a, rh[7]
+00A6	4709	mov     a, rh[2]
+00A7	520F	sbc     a, rh[8]
+00A8	470A	mov     a, rh[3]
+00A9	5210	sbc     a, rh[9]
+00AA	4715	mov     a, rh[14]
+00AB	5216	sbc     a, rh[15]
+00AC	380A	snz     C
+00AD	28B9	jmp     L00B9
+00AE	4095	mov     rh[14], a
+00AF	4708	mov     a, rh[1]
+00B0	420E	sub     a, rh[7]
+00B1	4088	mov     rh[1], a
+00B2	4709	mov     a, rh[2]
+00B3	520F	sbc     a, rh[8]
+00B4	4089	mov     rh[2], a
+00B5	470A	mov     a, rh[3]
+00B6	5210	sbc     a, rh[9]
+00B7	408A	mov     rh[3], a
+00B8	300A	set     C
+				L00B9:
+00B9	5A92	rlc     rh[11]
+00BA	5A93	rlc     rh[12]
+00BB	5A94	rlc     rh[13]
+00BC	5A97	rlc     rh[16]
+00BD	340A	clr     C
+00BE	5A88	rlc     rh[1]
+00BF	5A89	rlc     rh[2]
+00C0	5A8A	rlc     rh[3]
+00C1	5A95	rlc     rh[14]
+00C2	5791	sdz     rh[10]
+00C3	28A4	jmp     L00A4
+				L00C4:
+00C4	4712	mov     a, rh[11]
+00C5	4088	mov     rh[1], a
+00C6	4713	mov     a, rh[12]
+00C7	4089	mov     rh[2], a
+00C8	4714	mov     a, rh[13]
+00C9	408A	mov     rh[3], a
+00CA	4717	mov     a, rh[16]
+00CB	4095	mov     rh[14], a
+00CC	290B	jmp     L010B
+				L00CD:
+00CD	0F80	mov     a, 80H
+00CE	4496	xorm    a, rh[15]
+				L00CF:
+00CF	2039	call    L0039
+				L00D0:
+00D0	4711	mov     a, rh[10]
+00D1	420B	sub     a, rh[4]
+00D2	3D0A	sz      Z
+00D3	28E4	jmp     L00E4
+00D4	380A	snz     C
+00D5	28DD	jmp     L00DD
+00D6	340A	clr     C
+00D7	5B95	rrc     rh[14]
+00D8	5B8A	rrc     rh[3]
+00D9	5B89	rrc     rh[2]
+00DA	5B88	rrc     rh[1]
+00DB	548B	inc     rh[4]
+00DC	28D0	jmp     L00D0
+				L00DD:
+00DD	340A	clr     C
+00DE	5B96	rrc     rh[15]
+00DF	5B90	rrc     rh[9]
+00E0	5B8F	rrc     rh[8]
+00E1	5B8E	rrc     rh[7]
+00E2	5491	inc     rh[10]
+00E3	28D0	jmp     L00D0
+				L00E4:
+00E4	590C	rra     rh[5]
+00E5	440C	xor     a, rh[5]
+00E6	3805	snz     ACC.0
+00E7	28F3	jmp     L00F3
+00E8	418E	cpl     rh[7]
+00E9	418F	cpl     rh[8]
+00EA	4190	cpl     rh[9]
+00EB	4196	cpl     rh[15]
+00EC	548E	inc     rh[7]
+00ED	3D0A	sz      Z
+00EE	548F	inc     rh[8]
+00EF	3D0A	sz      Z
+00F0	5490	inc     rh[9]
+00F1	3D0A	sz      Z
+00F2	5496	inc     rh[15]
+				L00F3:
+00F3	470E	mov     a, rh[7]
+00F4	4388	addm    a, rh[1]
+00F5	470F	mov     a, rh[8]
+00F6	5389	adcm    a, rh[2]
+00F7	4710	mov     a, rh[9]
+00F8	538A	adcm    a, rh[3]
+00F9	4716	mov     a, rh[15]
+00FA	5395	adcm    a, rh[14]
+00FB	7B95	snz     rh[14].7
+00FC	290B	jmp     L010B
+00FD	4188	cpl     rh[1]
+00FE	4189	cpl     rh[2]
+00FF	418A	cpl     rh[3]
+0100	4195	cpl     rh[14]
+0101	5488	inc     rh[1]
+0102	3D0A	sz      Z
+0103	5489	inc     rh[2]
+0104	3D0A	sz      Z
+0105	548A	inc     rh[3]
+0106	3D0A	sz      Z
+0107	5495	inc     rh[14]
+0108	0F01	mov     a, 1H
+0109	448C	xorm    a, rh[5]
+010A	290B	jmp     L010B
+				L010B:
+010B	508B	sz      rh[4]
+010C	290E	jmp     L010E
+010D	284C	jmp     L004C
+				L010E:
+010E	5095	sz      rh[14]
+010F	2925	jmp     L0125
+0110	4708	mov     a, rh[1]
+0111	4509	or      a, rh[2]
+0112	450A	or      a, rh[3]
+0113	3D0A	sz      Z
+0114	284F	jmp     L004F
+				L0115:
+0115	7F8A	sz      rh[3].7
+0116	2936	jmp     L0136
+0117	578B	sdz     rh[4]
+0118	291B	jmp     L011B
+0119	700D	set     rh[6].0
+011A	284C	jmp     L004C
+				L011B:
+011B	340A	clr     C
+011C	5A88	rlc     rh[1]
+011D	5A89	rlc     rh[2]
+011E	5A8A	rlc     rh[3]
+011F	2915	jmp     L0115
+				L0120:
+0120	340A	clr     C
+0121	5B95	rrc     rh[14]
+0122	5B8A	rrc     rh[3]
+0123	5B89	rrc     rh[2]
+0124	5B88	rrc     rh[1]
+				L0125:
+0125	548B	inc     rh[4]
+0126	560B	siza    rh[4]
+0127	292A	jmp     L012A
+0128	708D	set     rh[6].1
+0129	293F	jmp     L013F
+				L012A:
+012A	5715	sdza    rh[14]
+012B	2920	jmp     L0120
+012C	300A	set     C
+012D	5388	adcm    a, rh[1]
+012E	5389	adcm    a, rh[2]
+012F	538A	adcm    a, rh[3]
+0130	3C0A	sz      C
+0131	548B	inc     rh[4]
+0132	5B95	rrc     rh[14]
+0133	5B8A	rrc     rh[3]
+0134	5B89	rrc     rh[2]
+0135	5B88	rrc     rh[1]
+				L0136:
+0136	508B	sz      rh[4]
+0137	2939	jmp     L0139
+0138	284C	jmp     L004C
+				L0139:
+0139	5B8C	rrc     rh[5]
+013A	5B0B	rrca    rh[4]
+013B	4095	mov     rh[14], a
+013C	380A	snz     C
+013D	778A	clr     rh[3].7
+013E	0003	ret
+				L013F:
+013F	5F88	set     rh[1]
+0140	5F89	set     rh[2]
+0141	5F8A	set     rh[3]
+0142	5F95	set     rh[14]
+0143	780C	snz     rh[5].0
+0144	7795	clr     rh[14].7
+0145	0003	ret
+				;59		s16 R=0,G=0,B=0;
+				;60		_wdtc=0b10101111;								//				_main:
+				_main:
+0212	0FAF	mov     a, AFH
+0213	00BE	mov     WDTC, a
+				;61		_RXC=1; _integ=0x02; _int0e=1;					//INT00214	3193	set     PAC3
+0215	0F02	mov     a, 2H
+0216	00B9	mov     INTEG, a
+0217	30B0	set     INT0E
+				;62		_TX=1; _TXC=0;									//_TX0218	3092	set     PA1
+0219	3493	clr     PAC1
+				;63		_tm0c0=0b00010000;								//For Bit Rate,fINT=fSYS
+021A	0F10	mov     a, 10H
+021B	00DE	mov     TM0C0, a
+				;64		_tm0c1=0b11000001;								//T/C, TM0A Match Clear
+021C	0FC1	mov     a, C1H
+021D	00DF	mov     TM0C1, a
+				;65		
+				;66		_tm1c0=0b00110000;								//fINT=fSYS/64,T1RP=000
+021E	0F30	mov     a, 30H
+021F	00C8	mov     TM1C0, a
+				;67		_tm1c1=0b10101000;								//PWM G, Act Hi,TM1RP Match Clear
+0220	0FA8	mov     a, A8H
+0221	00C9	mov     TM1C1, a
+				;68		_tm1c2=0b10101000;								//PWM B, Act Hi,Edge Aligned
+0222	0FA8	mov     a, A8H
+0223	00CA	mov     TM1C2, a
+				;69		_tm1al=0; _tm1ah=0;								//Initial 0 Duty(G)
+0224	1F4D	clr     TM1AL
+0225	1F4E	clr     TM1AH
+				;70		_tm1bl=0; _tm1bh=0;								//Initial 0 Duty(B)
+0226	1F4F	clr     TM1BL
+0227	1F50	clr     TM1BH
+				;71		
+				;72		_tm3c0=0b00110000;								//fINT=fSYS/64,T3RP=000
+0228	0F30	mov     a, 30H
+0229	00D8	mov     TM3C0, a
+				;73		_tm3c1=0b10101000;								//PWM R, Act Hi,TM3RP for Period
+022A	0FA8	mov     a, A8H
+022B	00D9	mov     TM3C1, a
+				;74		_tm3al=0; _tm3ah=0;								//Initial 0 Duty(R)
+022C	1F5C	clr     TM3AL
+022D	1F5D	clr     TM3AH
+				;75	
+				;76		_pcs3=0x10;										//Enable PC7 as TP1A (G)	
+022E	0F10	mov     a, 10H
+022F	80EB	lmov    PCS3, a
+				;77		_pcs0=0x10;										//Enable PC1 as TP1B (B)	
+0231	0F10	mov     a, 10H
+0232	80E8	lmov    PCS0, a
+				;78		_pds0=0x01;										//Enable Pd0 as TP3	 (R)
+0234	0F01	mov     a, 1H
+0235	80EC	lmov    PDS0, a
+				;79	
+				;80	 	_emi=1;    										//0237	3030	set     EMI
+				;81	 	b_RX=0;  			
+0238	5F67	clr     b_RX[0]
+				;82		_t1on=1; _t3on=1;
+0239	31C8	set     T1ON
+023A	31D8	set     T3ON
+				;83		
+				;84		_RelayC = 0;
+023B	371F	clr     PDC6
+				;85		_RelayPU = 0;
+023C	371D	clr     PDPU6
+				;86		_Relay = 0;
+023D	371E	clr     PD6
+				;87		
+				;88		intiChaos();
+023E	21B8	call    _intiChaos
+				;89		volatile int doOnce = 0;
+023F	5F23	clr     doOnce[0]
+0240	5F24	clr     doOnce[1]
+				;90		//while(1){
+				;91			//doMath();
+				;92			//doOnce++;
+				;93			//if(x1n==y1n){
+				;94				_pd6 = 1;
+0241	331E	set     PD6
+				;95				delay(1000);
+0242	0FE8	mov     a, E8H
+0243	409D	mov     del, a
+0244	0F03	mov     a, 3H
+0245	409E	mov     del[1], a
+0246	21A3	call    _delay
+				;96				_pd6 = 0;
+0247	371E	clr     PD6
+				;97	//			break;
+				;98			//}
+				;99		//}
+				;100		volatile union IEEE754 IEEE754Val, *ptr;
+				;101		volatile double *valPtr,Dval;
+				;102		ptr =& IEEE754Val;
+				;103		valPtr =& IEEE754Val;
+				;104	/*	ptr->s = 0b0;
+				;105		ptr->e = 0b10000010;
+				;106		ptr->m = 0b10010000000000000000000;
+				;107	*/
+				;108		IEEE754Val.allBit = 0b01000001010010000000000000000000;
+0248	5F1F	clr     IEEE754Val[0]
+0249	5F20	clr     IEEE754Val[1]
+024A	0F48	mov     a, 48H
+024B	40A1	mov     IEEE754Val[2], a
+024C	0F41	mov     a, 41H
+024D	40A2	mov     IEEE754Val[3], a
+				;109		IEEE754Val.Byte.a = IEEE754Val.Byte.a|0x07;
+024E	4722	mov     a, IEEE754Val[3]
+024F	4080	mov     ra, a
+0250	0FE0	mov     a, E0H
+0251	45A2	orm     a, IEEE754Val[3]
+				;110		//unsigned long val = IEEE754Val;
+				;111		while(1)
+				;112		{	if(b_RX)
+				_L41:
+0252	5E67	snz     b_RX[0]
+0253	2AF1	jmp     _L43
+				;113			{	key=RxData; b_RX=0;			
+0254	4774	mov     a, RxData[0]
+0255	40CE	mov     key[0], a
+0256	5F67	clr     b_RX[0]
+				;114				_pd6 = 1;
+0257	331E	set     PD6
+				;115				delay(1000);
+0258	0FE8	mov     a, E8H
+0259	409D	mov     del, a
+025A	0F03	mov     a, 3H
+025B	409E	mov     del[1], a
+025C	21A3	call    _delay
+				;116				_pd6 = 0;
+025D	371E	clr     PD6
+				;117			//doMath();
+				;118				switch(switchCaseNum){
+025E	474C	mov     a, switchCaseNum[0]
+025F	0C01	xor     a, 1H
+0260	454D	or      a, switchCaseNum[1]
+0261	3D0A	sz      Z
+0262	2A9D	jmp     _L44
+0263	474C	mov     a, switchCaseNum[0]
+0264	0C02	xor     a, 2H
+0265	454D	or      a, switchCaseNum[1]
+0266	3D0A	sz      Z
+0267	2AA5	jmp     _L45
+0268	474C	mov     a, switchCaseNum[0]
+0269	0C03	xor     a, 3H
+026A	454D	or      a, switchCaseNum[1]
+026B	3D0A	sz      Z
+026C	2AAD	jmp     _L46
+026D	474C	mov     a, switchCaseNum[0]
+026E	0C04	xor     a, 4H
+026F	454D	or      a, switchCaseNum[1]
+0270	3D0A	sz      Z
+0271	2AB7	jmp     _L47
+0272	474C	mov     a, switchCaseNum[0]
+0273	0C05	xor     a, 5H
+0274	454D	or      a, switchCaseNum[1]
+0275	3D0A	sz      Z
+0276	2ABF	jmp     _L48
+0277	474C	mov     a, switchCaseNum[0]
+0278	0C06	xor     a, 6H
+0279	454D	or      a, switchCaseNum[1]
+027A	3D0A	sz      Z
+027B	2AC7	jmp     _L49
+027C	474C	mov     a, switchCaseNum[0]
+027D	0C07	xor     a, 7H
+027E	454D	or      a, switchCaseNum[1]
+027F	3D0A	sz      Z
+0280	2AD1	jmp     _L50
+0281	474C	mov     a, switchCaseNum[0]
+0282	0C08	xor     a, 8H
+0283	454D	or      a, switchCaseNum[1]
+0284	3D0A	sz      Z
+0285	2AD9	jmp     _L51
+0286	474C	mov     a, switchCaseNum[0]
+0287	0C09	xor     a, 9H
+0288	454D	or      a, switchCaseNum[1]
+0289	3D0A	sz      Z
+028A	2AE1	jmp     _L52
+028B	474C	mov     a, switchCaseNum[0]
+028C	0C0A	xor     a, AH
+028D	454D	or      a, switchCaseNum[1]
+028E	3D0A	sz      Z
+028F	2AE9	jmp     _L53
+0290	474C	mov     a, switchCaseNum[0]
+0291	0C0B	xor     a, BH
+0292	454D	or      a, switchCaseNum[1]
+0293	390A	snz     Z
+0294	2A52	jmp     _L41
+				;119					case 1:
+				;120						u1Val.Byte.a|key;
+				_L44:
+029D	4773	mov     a, u1Val[3]
+029E	4080	mov     ra, a
+029F	474E	mov     a, key[0]
+02A0	4080	mov     ra, a
+				;121						switchCaseNum++;
+02A1	0F02	mov     a, 2H
+02A2	40CC	mov     switchCaseNum[0], a
+02A3	5F4D	clr     switchCaseNum[1]
+				;122						break;
+02A4	2A52	jmp     _L41
+				;123					case 2:
+				;124						u1Val.Byte.b|key;
+				_L45:
+02A5	4773	mov     a, u1Val[3]
+02A6	4080	mov     ra, a
+02A7	474E	mov     a, key[0]
+02A8	4080	mov     ra, a
+				;125						switchCaseNum++;
+02A9	0F03	mov     a, 3H
+02AA	40CC	mov     switchCaseNum[0], a
+02AB	5F4D	clr     switchCaseNum[1]
+				;126						break;
+02AC	2A52	jmp     _L41
+				;127					case 3:
+				;128						u1Val.Byte.c|key;
+				_L46:
+02AD	4772	mov     a, u1Val[2]
+02AE	4080	mov     ra, a
+02AF	4773	mov     a, u1Val[3]
+02B0	4080	mov     ra, a
+02B1	474E	mov     a, key[0]
+02B2	4080	mov     ra, a
+				;129						switchCaseNum++;
+02B3	0F04	mov     a, 4H
+02B4	40CC	mov     switchCaseNum[0], a
+02B5	5F4D	clr     switchCaseNum[1]
+				;130						break;
+02B6	2A52	jmp     _L41
+				;131					case 4:
+				;132						u1Val.Byte.d|key;
+				_L47:
+02B7	4772	mov     a, u1Val[2]
+02B8	4080	mov     ra, a
+02B9	474E	mov     a, key[0]
+02BA	4080	mov     ra, a
+				;133						switchCaseNum++;
+02BB	0F05	mov     a, 5H
+02BC	40CC	mov     switchCaseNum[0], a
+02BD	5F4D	clr     switchCaseNum[1]
+				;134						break;
+02BE	2A52	jmp     _L41
+				;135					case 5:
+				;136						u1Val.Byte.e|key;
+				_L48:
+02BF	4772	mov     a, u1Val[2]
+02C0	4080	mov     ra, a
+02C1	474E	mov     a, key[0]
+02C2	4080	mov     ra, a
+				;137						switchCaseNum++;
+02C3	0F06	mov     a, 6H
+02C4	40CC	mov     switchCaseNum[0], a
+02C5	5F4D	clr     switchCaseNum[1]
+				;138						break;
+02C6	2A52	jmp     _L41
+				;139					case 6:
+				;140						u1Val.Byte.f|key;
+				_L49:
+02C7	4771	mov     a, u1Val[1]
+02C8	4080	mov     ra, a
+02C9	4772	mov     a, u1Val[2]
+02CA	4080	mov     ra, a
+02CB	474E	mov     a, key[0]
+02CC	4080	mov     ra, a
+				;141						switchCaseNum++;
+02CD	0F07	mov     a, 7H
+02CE	40CC	mov     switchCaseNum[0], a
+02CF	5F4D	clr     switchCaseNum[1]
+				;142						break;
+02D0	2A52	jmp     _L41
+				;143					case 7:
+				;144						u1Val.Byte.g|key;
+				_L50:
+02D1	4771	mov     a, u1Val[1]
+02D2	4080	mov     ra, a
+02D3	474E	mov     a, key[0]
+02D4	4080	mov     ra, a
+				;145						switchCaseNum++;
+02D5	0F08	mov     a, 8H
+02D6	40CC	mov     switchCaseNum[0], a
+02D7	5F4D	clr     switchCaseNum[1]
+				;146						break;
+02D8	2A52	jmp     _L41
+				;147					case 8:
+				;148						u1Val.Byte.h|key;
+				_L51:
+02D9	4771	mov     a, u1Val[1]
+02DA	4080	mov     ra, a
+02DB	474E	mov     a, key[0]
+02DC	4080	mov     ra, a
+				;149						switchCaseNum++;
+02DD	0F09	mov     a, 9H
+02DE	40CC	mov     switchCaseNum[0], a
+02DF	5F4D	clr     switchCaseNum[1]
+				;150						break;
+02E0	2A52	jmp     _L41
+				;151					case 9:
+				;152						u1Val.Byte.i|key;
+				_L52:
+02E1	4770	mov     a, u1Val[0]
+02E2	4080	mov     ra, a
+02E3	474E	mov     a, key[0]
+02E4	4080	mov     ra, a
+				;153						switchCaseNum++;
+02E5	0F0A	mov     a, AH
+02E6	40CC	mov     switchCaseNum[0], a
+02E7	5F4D	clr     switchCaseNum[1]
+				;154						break;
+02E8	2A52	jmp     _L41
+				;155					case 10:
+				;156						u1Val.Byte.j|key;
+				_L53:
+02E9	4770	mov     a, u1Val[0]
+02EA	4080	mov     ra, a
+02EB	474E	mov     a, key[0]
+02EC	4080	mov     ra, a
+				;157						switchCaseNum++;
+02ED	0F0B	mov     a, BH
+02EE	40CC	mov     switchCaseNum[0], a
+02EF	5F4D	clr     switchCaseNum[1]
+				;158						break;
+02F0	2A52	jmp     _L41
+				;159					case 11:
+				;160						u1Val.Byte.k|key;
+0295	4770	mov     a, u1Val[0]
+0296	4080	mov     ra, a
+0297	474E	mov     a, key[0]
+0298	4080	mov     ra, a
+				;161						switchCaseNum=1;
+0299	0F01	mov     a, 1H
+029A	40CC	mov     switchCaseNum[0], a
+029B	5F4D	clr     switchCaseNum[1]
+				;162						break;
+029C	2A52	jmp     _L41
+				;163				}
+				;164			}
+				;165			else
+				;166			{	key=ScanKey();
+				_L43:
+02F1	2173	call    _ScanKey
+02F2	4080	mov     ra, a
+02F3	4700	mov     a, ra
+02F4	40CE	mov     key[0], a
+				;167				if(key!=12) 
+02F5	474E	mov     a, key[0]
+02F6	0A0C	sub     a, CH
+02F7	3D0A	sz      Z
+02F8	2A52	jmp     _L41
+				;168				{ 	UARTTxData(key);
+02F9	474E	mov     a, key[0]
+02FA	4080	mov     ra, a
+02FB	4700	mov     a, ra
+02FC	2146	call    _UARTTxData
+				;169					UARTTxData(IEEE754Val.Byte.a);
+02FD	5122	swapa   IEEE754Val[3]
+02FE	1985	rr      ACC
+02FF	0E07	and     a, 7H
+0300	4080	mov     ra, a
+0301	4700	mov     a, ra
+0302	2146	call    _UARTTxData
+				;170					UARTTxData(IEEE754Val.Byte.b);
+0303	5922	rra     IEEE754Val[3]
+0304	1985	rr      ACC
+0305	0E3F	and     a, 3FH
+0306	4080	mov     ra, a
+0307	0F07	mov     a, 7H
+0308	4680	andm    a, ra
+0309	4700	mov     a, ra
+030A	2146	call    _UARTTxData
+				;171					UARTTxData(IEEE754Val.Byte.c);
+030B	5821	rla     IEEE754Val[2]
+030C	0E01	and     a, 1H
+030D	4081	mov     rb, a
+030E	4722	mov     a, IEEE754Val[3]
+030F	0E03	and     a, 3H
+0310	4080	mov     ra, a
+0311	4700	mov     a, ra
+0312	4380	addm    a, ra
+0313	4701	mov     a, rb
+0314	4580	orm     a, ra
+0315	4700	mov     a, ra
+0316	2146	call    _UARTTxData
+				;172					UARTTxData(IEEE754Val.Byte.d);
+0317	5121	swapa   IEEE754Val[2]
+0318	0E0F	and     a, FH
+0319	4080	mov     ra, a
+031A	0F07	mov     a, 7H
+031B	4680	andm    a, ra
+031C	4700	mov     a, ra
+031D	2146	call    _UARTTxData
+				;173					UARTTxData(IEEE754Val.Byte.e);
+031E	5921	rra     IEEE754Val[2]
+031F	0E7F	and     a, 7FH
+0320	4080	mov     ra, a
+0321	0F07	mov     a, 7H
+0322	4680	andm    a, ra
+0323	4700	mov     a, ra
+0324	2146	call    _UARTTxData
+				;174					UARTTxData(IEEE754Val.Byte.f);
+0325	5820	rla     IEEE754Val[1]
+0326	1885	rl      ACC
+0327	0E03	and     a, 3H
+0328	4080	mov     ra, a
+0329	4721	mov     a, IEEE754Val[2]
+032A	0E01	and     a, 1H
+032B	4082	mov     rc, a
+032C	5F01	clr     rb
+032D	5082	sz      rc
+032E	7101	set     rb.2
+032F	4701	mov     a, rb
+0330	4580	orm     a, ra
+0331	4700	mov     a, ra
+0332	2146	call    _UARTTxData
+				;175					UARTTxData(IEEE754Val.Byte.g);
+0333	5120	swapa   IEEE754Val[1]
+0334	1885	rl      ACC
+0335	0E1F	and     a, 1FH
+0336	4080	mov     ra, a
+0337	0F07	mov     a, 7H
+0338	4680	andm    a, ra
+0339	4700	mov     a, ra
+033A	2146	call    _UARTTxData
+				;176					UARTTxData(IEEE754Val.Byte.h);
+033B	4720	mov     a, IEEE754Val[1]
+033C	0E07	and     a, 7H
+033D	4080	mov     ra, a
+033E	4700	mov     a, ra
+033F	2146	call    _UARTTxData
+				;177					UARTTxData(IEEE754Val.Byte.i);
+0340	511F	swapa   IEEE754Val[0]
+0341	1985	rr      ACC
+0342	0E07	and     a, 7H
+0343	4080	mov     ra, a
+0344	4700	mov     a, ra
+0345	2146	call    _UARTTxData
+				;178					UARTTxData(IEEE754Val.Byte.j);
+0346	591F	rra     IEEE754Val[0]
+0347	1985	rr      ACC
+0348	0E3F	and     a, 3FH
+0349	4080	mov     ra, a
+034A	0F07	mov     a, 7H
+034B	4680	andm    a, ra
+034C	4700	mov     a, ra
+034D	2146	call    _UARTTxData
+				;179					UARTTxData(IEEE754Val.Byte.k);
+034E	471F	mov     a, IEEE754Val[0]
+034F	0E03	and     a, 3H
+0350	4080	mov     ra, a
+0351	4700	mov     a, ra
+0352	2146	call    _UARTTxData
+				;180					delay(200);
+0353	0FC8	mov     a, C8H
+0354	409D	mov     del, a
+0355	5F1E	clr     del[1]
+0356	21A3	call    _delay
+0357	2A52	jmp     _L41
+0358	2B58	jmp     $
+				;181				}
+				;182	
+				;183			}
+				;184		}
+				;185	}
+				;186	DEFINE_ISR(ISR_ExtINT0,0x04)
+				;187	{	u8 temp=0b00000001;
+				@ISR_ExtINT0_code .SECTION 'CODE'
+0004	4098	mov     r104, a
+0005	070B	mov     a, BP
+0006	1F0B	clr     BP
+0007	2808	jmp     _ISR_ExtINT0
+				_ISR_ExtINT0:
+				_ISR_ExtINT0:
+				@dummy4 .SECTION 'CODE'
+0008	4099	mov     r204, a
+0009	070A	mov     a, STATUS
+000A	40FD	mov     r304, a
+001A	0F01	mov     a, 1H
+001B	409B	mov     ra04, a
+				;188		_tm0al=(BITC/2); _tm0ah=(BITC/2)>>8;			//0.5T
+000B	0FA0	mov     a, A0H
+000C	00E2	mov     TM0AL, a
+000D	0F01	mov     a, 1H
+000E	00E3	mov     TM0AH, a
+				;189		_t0on=1;
+000F	31DE	set     T0ON
+				;190		_t0af=0;
+0010	36B4	clr     T0AF
+				;191		RxData=0;
+0011	5F74	clr     RxData[0]
+				;192		while(!_t0af);									//				_L3:
+0012	3AB4	snz     T0AF
+0013	2812	jmp     _L3
+				;193		_tm0al=BITC; _tm0ah=BITC>>8;					//T
+0014	0F41	mov     a, 41H
+0015	00E2	mov     TM0AL, a
+0016	0F03	mov     a, 3H
+0017	00E3	mov     TM0AH, a
+				;194		_t0af=0;
+0018	36B4	clr     T0AF
+0019	5F1A	clr     rb04
+				;195		do 
+				;196		{	while(!_t0af);								//				_L5:
+001C	3AB4	snz     T0AF
+001D	281C	jmp     _L5
+				;197			_t0af=0;
+001E	36B4	clr     T0AF
+				;198			if(_RX==1) RxData|=temp;					//001F	3992	snz     PA3
+0020	2823	jmp     _L6
+0021	471B	mov     a, ra04
+0022	45F4	orm     a, RxData[0]
+				;199			temp<<=1;									//RxData				_L6:
+0023	471B	mov     a, ra04
+0024	439B	addm    a, ra04
+0025	549A	inc     rb04
+				;200		} while (temp);									//0026	471A	mov     a, rb04
+0027	0A08	sub     a, 8H
+0028	390A	snz     Z
+0029	281C	jmp     _L5
+				;201		b_RX=1;											//002A	0F01	mov     a, 1H
+002B	40E7	mov     b_RX[0], a
+				;202		while(!_t0af);									//				_L10:
+002C	3AB4	snz     T0AF
+002D	282C	jmp     _L10
+				;203		_t0on=0;
+002E	35DE	clr     T0ON
+				;204		_int0f=0;
+002F	3630	clr     INT0F
+0030	4719	mov     a, r204
+0031	008B	mov     BP, a
+0032	477D	mov     a, r304
+0033	008A	mov     STATUS, a
+0034	4718	mov     a, r104
+0035	0004	reti
+				;205	}
+				;206	void UARTTxData(u8 data)
+				;207	{	u8 temp=0b00000001;
+				_UARTTxData:
+				_UARTTxData:
+0146	409C	mov     data[0], a
+0152	0F01	mov     a, 1H
+0153	4080	mov     ra, a
+				;208		_tm0al=BITC; _tm0ah=BITC>>8;					//T
+0147	0F41	mov     a, 41H
+0148	00E2	mov     TM0AL, a
+0149	0F03	mov     a, 3H
+014A	00E3	mov     TM0AH, a
+				;209		_TX=0;											//014B	3492	clr     PA1
+				;210		_t0on=1;
+014C	31DE	set     T0ON
+				;211		_t0af=0;
+014D	36B4	clr     T0AF
+				;212		while(!_t0af);									//				L014E:
+014E	3AB4	snz     T0AF
+014F	294E	jmp     L014E
+				;213		_t0af=0;
+0150	36B4	clr     T0AF
+0151	5F01	clr     rb
+				;214		do 
+				;215		{	_TX=(data & temp)? 1 : 0 ;	  				//				L0154:
+0154	4700	mov     a, ra
+0155	461C	and     a, data[0]
+0156	4082	mov     rc, a
+0157	0F00	mov     a, 0H
+0158	4202	sub     a, rc
+0159	4083	mov     rd, a
+015A	4703	mov     a, rd
+015B	4582	orm     a, rc
+015C	5A82	rlc     rc
+015D	5F02	clr     rc
+015E	5A82	rlc     rc
+015F	4702	mov     a, rc
+0160	4382	addm    a, rc
+0161	3492	clr     PA1
+0162	4702	mov     a, rc
+0163	0592	orm     a, PA
+				;216			while(!_t0af);								//				L0164:
+0164	3AB4	snz     T0AF
+0165	2964	jmp     L0164
+				;217			_t0af=0;
+0166	36B4	clr     T0AF
+				;218			temp<<=1;
+0167	4700	mov     a, ra
+0168	4380	addm    a, ra
+0169	5481	inc     rb
+				;219		} while (temp);	
+016A	4701	mov     a, rb
+016B	0A08	sub     a, 8H
+016C	390A	snz     Z
+016D	2954	jmp     L0154
+				;220		_TX=1;											//016E	3092	set     PA1
+				;221		while(!_t0af);
+				L016F:
+016F	3AB4	snz     T0AF
+0170	296F	jmp     L016F
+				;222		_t0on=0;
+0171	35DE	clr     T0ON
+0172	0003	ret
+				;223	}
+				;224	u8 ScanKey(){
+				;225		u8 i,key=0;
+0179	5F00	clr     ra
+				;226		KeyPortC=0xF0; KeyPortPU=0xF0;			   		//IO				_ScanKey:
+				_ScanKey:
+0173	0FF0	mov     a, F0H
+0174	00AB	mov     PGC, a
+0175	0FF0	mov     a, F0H
+0176	00A9	mov     PGPU, a
+				;227		KeyPort=0b11111110;					        	//Initial Scancode
+0177	0FFE	mov     a, FEH
+0178	00AA	mov     PG, a
+				;228		for(i=0;i<=2;i++)
+018F	4700	mov     a, ra
+0190	0A0C	sub     a, CH
+0191	390A	snz     Z
+0192	297A	jmp     _L29
+				;229		{	if(!(KeyPort & 1<<4)) break;		     	//Check Column 0
+				_L29:
+017A	3A2A	snz     PG4
+017B	2993	jmp     _L25
+				;230			key++;
+017E	5480	inc     ra
+017F	2993	jmp     _L25
+				;231			if(!(KeyPort & 1<<5)) break;			   	//Check Column 1
+017C	3EAA	sz      PG5
+017D	2980	jmp     _L26
+				;232			key++;
+0182	0F02	mov     a, 2H
+0183	4380	addm    a, ra
+0184	2993	jmp     _L25
+				;233			if(!(KeyPort & 1<<6)) break;			  	//Check Column 2
+				_L26:
+0180	3F2A	sz      PG6
+0181	2985	jmp     _L27
+				;234			key++;
+0187	0F03	mov     a, 3H
+0188	4380	addm    a, ra
+0189	2993	jmp     _L25
+				;235			if(!(KeyPort & 1<<7)) break;			  	//Check Column 3
+				_L27:
+0185	3FAA	sz      PG7
+0186	298A	jmp     _L28
+				;236			key++;
+				_L28:
+018A	0F04	mov     a, 4H
+018B	4380	addm    a, ra
+				;237			KeyPort<<=1; KeyPort|=0b00000001;	   		//Scancode for Next Row
+018C	072A	mov     a, PG
+018D	03AA	addm    a, PG
+018E	302A	set     PG0
+				;238		}
+				;239		return key;	
+				;240	}
+				_L25:
+0193	4700	mov     a, ra
+0194	0003	ret
+0195	0000	nop
+0196	0000	nop
+0197	0000	nop
+0198	0000	nop
+				L0199:
+0199	0000	nop
+				L019A:
+019A	0000	nop
+019B	1785	sdz     ACC
+019C	299A	jmp     L019A
+				L019D:
+019D	0000	nop
+019E	1785	sdz     ACC
+019F	299D	jmp     L019D
+01A0	579C	sdz     u1
+01A1	299D	jmp     L019D
+01A2	0003	ret
+				;241	void delay(u16 del){	
+				;242		u16 i;
+				;243		for(i=0;i<del;i++) GCC_DELAY(2000);				//Delay del ms @fSYS=8MHz
+				_delay:
+				_delay:
+01A3	5F01	clr     rb
+01A4	5F02	clr     rc
+01A5	29B1	jmp     _L37
+				_L38:
+01A6	0F01	mov     a, 1H
+01A7	409C	mov     u1, a
+01A8	0FF1	mov     a, F1H
+01A9	340B	clr     BP0
+01AA	348B	clr     BP1
+01AB	2199	call    L0199
+01AC	348B	clr     BP1
+01AD	340B	clr     BP0
+01AE	5481	inc     rb
+01AF	3D0A	sz      Z
+01B0	5482	inc     rc
+				_L37:
+01B1	4701	mov     a, rb
+01B2	421D	sub     a, del[0]
+01B3	4702	mov     a, rc
+01B4	521E	sbc     a, del[1]
+01B5	3B0A	snz     CZ
+01B6	29A6	jmp     _L38
+01B7	0003	ret
+				;244	}
+				;245	void doMath(){
+				;246		chaosMath();	
+				_doMath:
+				_doMath:
+0002	2359	call    _chaosMath
+0003	0003	ret
+				;247	}
+				;248	void intiChaos(){
+				;249	//	x1 = 0.5;
+				;250	//	x2 = -0.3;
+				;251	//	x3 = 0.4;
+				;252		y1 = -0.3;
+				_intiChaos:
+				_intiChaos:
+01B8	0F9A	mov     a, 9AH
+01B9	40DF	mov     y1[0], a
+01BA	0F99	mov     a, 99H
+01BB	40E0	mov     y1[1], a
+01BC	0F99	mov     a, 99H
+01BD	40E1	mov     y1[2], a
+01BE	0FBE	mov     a, BEH
+01BF	40E2	mov     y1[3], a
+				;253		y2 = -0.1;
+01C0	0FCD	mov     a, CDH
+01C1	40CF	mov     y2[0], a
+01C2	0FCC	mov     a, CCH
+01C3	40D0	mov     y2[1], a
+01C4	0FCC	mov     a, CCH
+01C5	40D1	mov     y2[2], a
+01C6	0FBD	mov     a, BDH
+01C7	40D2	mov     y2[3], a
+				;254		y3 = 0.8;
+01C8	0FCD	mov     a, CDH
+01C9	40E8	mov     y3[0], a
+01CA	0FCC	mov     a, CCH
+01CB	40E9	mov     y3[1], a
+01CC	0F4C	mov     a, 4CH
+01CD	40EA	mov     y3[2], a
+01CE	0F3F	mov     a, 3FH
+01CF	40EB	mov     y3[3], a
+				;255		ax1=1;
+01D0	5F53	clr     ax1[0]
+01D1	5F54	clr     ax1[1]
+01D2	0F80	mov     a, 80H
+01D3	40D5	mov     ax1[2], a
+01D4	0F3F	mov     a, 3FH
+01D5	40D6	mov     ax1[3], a
+				;256		ax2=1;
+01D6	5F57	clr     ax2[0]
+01D7	5F58	clr     ax2[1]
+01D8	0F80	mov     a, 80H
+01D9	40D9	mov     ax2[2], a
+01DA	0F3F	mov     a, 3FH
+01DB	40DA	mov     ax2[3], a
+				;257		ax3=1;
+01DC	5F63	clr     ax3[0]
+01DD	5F64	clr     ax3[1]
+01DE	0F80	mov     a, 80H
+01DF	40E5	mov     ax3[2], a
+01E0	0F3F	mov     a, 3FH
+01E1	40E6	mov     ax3[3], a
+				;258		dx1=1;
+01E2	5F79	clr     dx1[0]
+01E3	5F7A	clr     dx1[1]
+01E4	0F80	mov     a, 80H
+01E5	40FB	mov     dx1[2], a
+01E6	0F3F	mov     a, 3FH
+01E7	40FC	mov     dx1[3], a
+				;259		dx2=1;
+01E8	5F5B	clr     dx2[0]
+01E9	5F5C	clr     dx2[1]
+01EA	0F80	mov     a, 80H
+01EB	40DD	mov     dx2[2], a
+01EC	0F3F	mov     a, 3FH
+01ED	40DE	mov     dx2[3], a
+				;260		dx3=1;
+01EE	5F75	clr     dx3[0]
+01EF	5F76	clr     dx3[1]
+01F0	0F80	mov     a, 80H
+01F1	40F7	mov     dx3[2], a
+01F2	0F3F	mov     a, 3FH
+01F3	40F8	mov     dx3[3], a
+				;261		c1 = -0.5;
+01F4	DF04	lclr    c1[0]
+01F6	DF05	lclr    c1[1]
+01F8	DF06	lclr    c1[2]
+01FA	0FBF	mov     a, BFH
+01FB	C087	lmov    c1[3], a
+				;262		c2 = 0.06;
+01FD	0F8F	mov     a, 8FH
+01FE	C080	lmov    c2[0], a
+0200	0FC2	mov     a, C2H
+0201	C081	lmov    c2[1], a
+0203	0F75	mov     a, 75H
+0204	C082	lmov    c2[2], a
+0206	0F3D	mov     a, 3DH
+0207	C083	lmov    c2[3], a
+				;263		A = 0.1;
+0209	0FCD	mov     a, CDH
+020A	40EC	mov     A[0], a
+020B	0FCC	mov     a, CCH
+020C	40ED	mov     A[1], a
+020D	0FCC	mov     a, CCH
+020E	40EE	mov     A[2], a
+020F	0F3D	mov     a, 3DH
+0210	40EF	mov     A[3], a
+0211	0003	ret
+				;264	}
+				;265	void chaosMath(double u1){
+				;266		g1 = - ( ax1 / (ax2 * ax2) );
+				_chaosMath:
+				_chaosMath:
+0359	475A	mov     a, ax2[3]
+035A	4095	mov     rh[14], a
+035B	4759	mov     a, ax2[2]
+035C	408A	mov     rh[3], a
+035D	4758	mov     a, ax2[1]
+035E	4089	mov     rh[2], a
+035F	4757	mov     a, ax2[0]
+0360	4088	mov     rh[1], a
+0361	475A	mov     a, ax2[3]
+0362	4096	mov     rh[15], a
+0363	4759	mov     a, ax2[2]
+0364	4090	mov     rh[9], a
+0365	4758	mov     a, ax2[1]
+0366	408F	mov     rh[8], a
+0367	4757	mov     a, ax2[0]
+0368	408E	mov     rh[7], a
+0369	2051	call    L0051
+036A	4715	mov     a, rh[14]
+036B	4086	mov     rg, a
+036C	470A	mov     a, rh[3]
+036D	4085	mov     rf, a
+036E	4709	mov     a, rh[2]
+036F	4084	mov     re, a
+0370	4708	mov     a, rh[1]
+0371	4083	mov     rd, a
+0372	4756	mov     a, ax1[3]
+0373	4095	mov     rh[14], a
+0374	4755	mov     a, ax1[2]
+0375	408A	mov     rh[3], a
+0376	4754	mov     a, ax1[1]
+0377	4089	mov     rh[2], a
+0378	4753	mov     a, ax1[0]
+0379	4088	mov     rh[1], a
+037A	4706	mov     a, rg
+037B	4096	mov     rh[15], a
+037C	4705	mov     a, rf
+037D	4090	mov     rh[9], a
+037E	4704	mov     a, re
+037F	408F	mov     rh[8], a
+0380	4703	mov     a, rd
+0381	408E	mov     rh[7], a
+0382	2091	call    L0091
+0383	4715	mov     a, rh[14]
+0384	40A3	mov     doOnce, a
+0385	470A	mov     a, rh[3]
+0386	40A2	mov     IEEE754Val[3], a
+0387	4709	mov     a, rh[2]
+0388	40A1	mov     IEEE754Val[2], a
+0389	4708	mov     a, rh[1]
+038A	40A0	mov     IEEE754Val[1], a
+038B	4722	mov     a, IEEE754Val[3]
+038C	4523	or      a, doOnce
+038D	0F80	mov     a, 80H
+038E	390A	snz     Z
+038F	44A3	xorm    a, doOnce
+0390	4720	mov     a, IEEE754Val[1]
+0391	C0B4	lmov    g1[0], a
+0393	4721	mov     a, IEEE754Val[2]
+0394	C0B5	lmov    g1[1], a
+0396	4722	mov     a, IEEE754Val[3]
+0397	C0B6	lmov    g1[2], a
+0399	4723	mov     a, doOnce
+039A	C0B7	lmov    g1[3], a
+				;267		g2 = 2 * ax1 * dx2 / (ax2 * ax2);
+039C	4756	mov     a, ax1[3]
+039D	4095	mov     rh[14], a
+039E	4755	mov     a, ax1[2]
+039F	408A	mov     rh[3], a
+03A0	4754	mov     a, ax1[1]
+03A1	4089	mov     rh[2], a
+03A2	4753	mov     a, ax1[0]
+03A3	4088	mov     rh[1], a
+03A4	4756	mov     a, ax1[3]
+03A5	4096	mov     rh[15], a
+03A6	4755	mov     a, ax1[2]
+03A7	4090	mov     rh[9], a
+03A8	4754	mov     a, ax1[1]
+03A9	408F	mov     rh[8], a
+03AA	4753	mov     a, ax1[0]
+03AB	408E	mov     rh[7], a
+03AC	20CF	call    L00CF
+03AD	4715	mov     a, rh[14]
+03AE	40AB	mov     doOnce[8], a
+03AF	470A	mov     a, rh[3]
+03B0	40AA	mov     doOnce[7], a
+03B1	4709	mov     a, rh[2]
+03B2	40A9	mov     doOnce[6], a
+03B3	4708	mov     a, rh[1]
+03B4	40A8	mov     doOnce[5], a
+03B5	472B	mov     a, doOnce[8]
+03B6	4095	mov     rh[14], a
+03B7	472A	mov     a, doOnce[7]
+03B8	408A	mov     rh[3], a
+03B9	4729	mov     a, doOnce[6]
+03BA	4089	mov     rh[2], a
+03BB	4728	mov     a, doOnce[5]
+03BC	4088	mov     rh[1], a
+03BD	475E	mov     a, dx2[3]
+03BE	4096	mov     rh[15], a
+				@dummy .SECTION 'CODE'
+03BF	475D	mov     a, dx2[2]
+03C0	4090	mov     rh[9], a
+03C1	475C	mov     a, dx2[1]
+03C2	408F	mov     rh[8], a
+03C3	475B	mov     a, dx2[0]
+03C4	408E	mov     rh[7], a
+03C5	2051	call    L0051
+03C6	4715	mov     a, rh[14]
+03C7	40AB	mov     doOnce[8], a
+03C8	470A	mov     a, rh[3]
+03C9	40AA	mov     doOnce[7], a
+03CA	4709	mov     a, rh[2]
+03CB	40A9	mov     doOnce[6], a
+03CC	4708	mov     a, rh[1]
+03CD	40A8	mov     doOnce[5], a
+03CE	472B	mov     a, doOnce[8]
+03CF	4095	mov     rh[14], a
+03D0	472A	mov     a, doOnce[7]
+03D1	408A	mov     rh[3], a
+03D2	4729	mov     a, doOnce[6]
+03D3	4089	mov     rh[2], a
+03D4	4728	mov     a, doOnce[5]
+03D5	4088	mov     rh[1], a
+03D6	4706	mov     a, rg
+03D7	4096	mov     rh[15], a
+03D8	4705	mov     a, rf
+03D9	4090	mov     rh[9], a
+03DA	4704	mov     a, re
+03DB	408F	mov     rh[8], a
+03DC	4703	mov     a, rd
+03DD	408E	mov     rh[7], a
+03DE	2091	call    L0091
+03DF	4715	mov     a, rh[14]
+03E0	40BB	mov     doOnce[24], a
+03E1	470A	mov     a, rh[3]
+03E2	40BA	mov     doOnce[23], a
+03E3	4709	mov     a, rh[2]
+03E4	40B9	mov     doOnce[22], a
+03E5	4708	mov     a, rh[1]
+03E6	40B8	mov     doOnce[21], a
+03E7	4738	mov     a, doOnce[21]
+03E8	C0B0	lmov    g2[0], a
+03EA	4739	mov     a, doOnce[22]
+03EB	C0B1	lmov    g2[1], a
+03ED	473A	mov     a, doOnce[23]
+03EE	C0B2	lmov    g2[2], a
+03F0	473B	mov     a, doOnce[24]
+03F1	C0B3	lmov    g2[3], a
+				;268		g3 = - 0.1 * ax1 / ax3;
+03F3	4756	mov     a, ax1[3]
+03F4	4095	mov     rh[14], a
+03F5	4755	mov     a, ax1[2]
+03F6	408A	mov     rh[3], a
+03F7	4754	mov     a, ax1[1]
+03F8	4089	mov     rh[2], a
+03F9	4753	mov     a, ax1[0]
+03FA	4088	mov     rh[1], a
+03FB	0FBD	mov     a, BDH
+03FC	4096	mov     rh[15], a
+03FD	0FCC	mov     a, CCH
+03FE	4090	mov     rh[9], a
+03FF	0FCC	mov     a, CCH
+0400	408F	mov     rh[8], a
+0401	0FCD	mov     a, CDH
+0402	408E	mov     rh[7], a
+0403	2051	call    L0051
+0404	4715	mov     a, rh[14]
+0405	40AF	mov     doOnce[12], a
+0406	470A	mov     a, rh[3]
+0407	40AE	mov     doOnce[11], a
+0408	4709	mov     a, rh[2]
+0409	40AD	mov     doOnce[10], a
+040A	4708	mov     a, rh[1]
+040B	40AC	mov     doOnce[9], a
+040C	472F	mov     a, doOnce[12]
+040D	4095	mov     rh[14], a
+040E	472E	mov     a, doOnce[11]
+040F	408A	mov     rh[3], a
+0410	472D	mov     a, doOnce[10]
+0411	4089	mov     rh[2], a
+0412	472C	mov     a, doOnce[9]
+0413	4088	mov     rh[1], a
+0414	4766	mov     a, ax3[3]
+0415	4096	mov     rh[15], a
+0416	4765	mov     a, ax3[2]
+0417	4090	mov     rh[9], a
+0418	4764	mov     a, ax3[1]
+0419	408F	mov     rh[8], a
+041A	4763	mov     a, ax3[0]
+041B	408E	mov     rh[7], a
+041C	2091	call    L0091
+041D	4715	mov     a, rh[14]
+041E	40BF	mov     doOnce[28], a
+041F	470A	mov     a, rh[3]
+0420	40BE	mov     doOnce[27], a
+0421	4709	mov     a, rh[2]
+0422	40BD	mov     doOnce[26], a
+0423	4708	mov     a, rh[1]
+0424	40BC	mov     doOnce[25], a
+0425	473C	mov     a, doOnce[25]
+0426	C0AC	lmov    g3[0], a
+0428	473D	mov     a, doOnce[26]
+0429	C0AD	lmov    g3[1], a
+042B	473E	mov     a, doOnce[27]
+042C	C0AE	lmov    g3[2], a
+042E	473F	mov     a, doOnce[28]
+042F	C0AF	lmov    g3[3], a
+				;269		g4 = ax1 * ( 1.76 - (dx2 * dx2) /  (ax2 * ax2) + 0.1 * ax1 * dx3 / ax3 ) + dx1;
+0431	475E	mov     a, dx2[3]
+0432	4095	mov     rh[14], a
+0433	475D	mov     a, dx2[2]
+0434	408A	mov     rh[3], a
+0435	475C	mov     a, dx2[1]
+0436	4089	mov     rh[2], a
+0437	475B	mov     a, dx2[0]
+0438	4088	mov     rh[1], a
+0439	475E	mov     a, dx2[3]
+043A	4096	mov     rh[15], a
+043B	475D	mov     a, dx2[2]
+043C	4090	mov     rh[9], a
+043D	475C	mov     a, dx2[1]
+043E	408F	mov     rh[8], a
+043F	475B	mov     a, dx2[0]
+0440	408E	mov     rh[7], a
+0441	2051	call    L0051
+0442	4715	mov     a, rh[14]
+0443	40AF	mov     doOnce[12], a
+0444	470A	mov     a, rh[3]
+0445	40AE	mov     doOnce[11], a
+0446	4709	mov     a, rh[2]
+0447	40AD	mov     doOnce[10], a
+0448	4708	mov     a, rh[1]
+0449	40AC	mov     doOnce[9], a
+044A	472F	mov     a, doOnce[12]
+044B	4095	mov     rh[14], a
+044C	472E	mov     a, doOnce[11]
+044D	408A	mov     rh[3], a
+044E	472D	mov     a, doOnce[10]
+044F	4089	mov     rh[2], a
+0450	472C	mov     a, doOnce[9]
+0451	4088	mov     rh[1], a
+0452	4706	mov     a, rg
+0453	4096	mov     rh[15], a
+0454	4705	mov     a, rf
+0455	4090	mov     rh[9], a
+0456	4704	mov     a, re
+0457	408F	mov     rh[8], a
+0458	4703	mov     a, rd
+0459	408E	mov     rh[7], a
+045A	2091	call    L0091
+045B	4715	mov     a, rh[14]
+045C	4087	mov     rh, a
+045D	470A	mov     a, rh[3]
+045E	4086	mov     rg, a
+045F	4709	mov     a, rh[2]
+0460	4085	mov     rf, a
+0461	4708	mov     a, rh[1]
+0462	4084	mov     re, a
+0463	0FAE	mov     a, AEH
+0464	4080	mov     ra, a
+0465	0F47	mov     a, 47H
+0466	4081	mov     rb, a
+0467	0FE1	mov     a, E1H
+0468	4082	mov     rc, a
+0469	0F3F	mov     a, 3FH
+046A	4083	mov     rd, a
+046B	4703	mov     a, rd
+046C	4095	mov     rh[14], a
+046D	4702	mov     a, rc
+046E	408A	mov     rh[3], a
+046F	4701	mov     a, rb
+0470	4089	mov     rh[2], a
+0471	4700	mov     a, ra
+0472	4088	mov     rh[1], a
+0473	4707	mov     a, rh
+0474	4096	mov     rh[15], a
+0475	4706	mov     a, rg
+0476	4090	mov     rh[9], a
+0477	4705	mov     a, rf
+0478	408F	mov     rh[8], a
+0479	4704	mov     a, re
+047A	408E	mov     rh[7], a
+047B	20CD	call    L00CD
+047C	4715	mov     a, rh[14]
+047D	40AF	mov     doOnce[12], a
+047E	470A	mov     a, rh[3]
+047F	40AE	mov     doOnce[11], a
+0480	4709	mov     a, rh[2]
+0481	40AD	mov     doOnce[10], a
+0482	4708	mov     a, rh[1]
+0483	40AC	mov     doOnce[9], a
+0484	4756	mov     a, ax1[3]
+0485	4095	mov     rh[14], a
+0486	4755	mov     a, ax1[2]
+0487	408A	mov     rh[3], a
+0488	4754	mov     a, ax1[1]
+0489	4089	mov     rh[2], a
+048A	4753	mov     a, ax1[0]
+048B	4088	mov     rh[1], a
+048C	0F3D	mov     a, 3DH
+048D	4096	mov     rh[15], a
+048E	0FCC	mov     a, CCH
+048F	4090	mov     rh[9], a
+0490	0FCC	mov     a, CCH
+0491	408F	mov     rh[8], a
+0492	0FCD	mov     a, CDH
+0493	408E	mov     rh[7], a
+0494	2051	call    L0051
+0495	4715	mov     a, rh[14]
+0496	4086	mov     rg, a
+0497	470A	mov     a, rh[3]
+0498	4085	mov     rf, a
+0499	4709	mov     a, rh[2]
+049A	4084	mov     re, a
+049B	4708	mov     a, rh[1]
+049C	4083	mov     rd, a
+049D	4706	mov     a, rg
+049E	4095	mov     rh[14], a
+049F	4705	mov     a, rf
+04A0	408A	mov     rh[3], a
+04A1	4704	mov     a, re
+04A2	4089	mov     rh[2], a
+04A3	4703	mov     a, rd
+04A4	4088	mov     rh[1], a
+04A5	4778	mov     a, dx3[3]
+04A6	4096	mov     rh[15], a
+04A7	4777	mov     a, dx3[2]
+04A8	4090	mov     rh[9], a
+04A9	4776	mov     a, dx3[1]
+04AA	408F	mov     rh[8], a
+04AB	4775	mov     a, dx3[0]
+04AC	408E	mov     rh[7], a
+04AD	2051	call    L0051
+04AE	4715	mov     a, rh[14]
+04AF	4086	mov     rg, a
+04B0	470A	mov     a, rh[3]
+04B1	4085	mov     rf, a
+04B2	4709	mov     a, rh[2]
+04B3	4084	mov     re, a
+04B4	4708	mov     a, rh[1]
+04B5	4083	mov     rd, a
+04B6	4706	mov     a, rg
+04B7	4095	mov     rh[14], a
+04B8	4705	mov     a, rf
+04B9	408A	mov     rh[3], a
+04BA	4704	mov     a, re
+04BB	4089	mov     rh[2], a
+04BC	4703	mov     a, rd
+04BD	4088	mov     rh[1], a
+04BE	4766	mov     a, ax3[3]
+04BF	4096	mov     rh[15], a
+04C0	4765	mov     a, ax3[2]
+04C1	4090	mov     rh[9], a
+04C2	4764	mov     a, ax3[1]
+04C3	408F	mov     rh[8], a
+04C4	4763	mov     a, ax3[0]
+04C5	408E	mov     rh[7], a
+04C6	2091	call    L0091
+04C7	4715	mov     a, rh[14]
+04C8	4086	mov     rg, a
+04C9	470A	mov     a, rh[3]
+04CA	4085	mov     rf, a
+04CB	4709	mov     a, rh[2]
+04CC	4084	mov     re, a
+04CD	4708	mov     a, rh[1]
+04CE	4083	mov     rd, a
+04CF	472F	mov     a, doOnce[12]
+04D0	4095	mov     rh[14], a
+04D1	472E	mov     a, doOnce[11]
+04D2	408A	mov     rh[3], a
+04D3	472D	mov     a, doOnce[10]
+04D4	4089	mov     rh[2], a
+04D5	472C	mov     a, doOnce[9]
+04D6	4088	mov     rh[1], a
+04D7	4706	mov     a, rg
+04D8	4096	mov     rh[15], a
+04D9	4705	mov     a, rf
+04DA	4090	mov     rh[9], a
+04DB	4704	mov     a, re
+04DC	408F	mov     rh[8], a
+04DD	4703	mov     a, rd
+04DE	408E	mov     rh[7], a
+04DF	20CF	call    L00CF
+04E0	4715	mov     a, rh[14]
+04E1	4086	mov     rg, a
+04E2	470A	mov     a, rh[3]
+04E3	4085	mov     rf, a
+04E4	4709	mov     a, rh[2]
+04E5	4084	mov     re, a
+04E6	4708	mov     a, rh[1]
+04E7	4083	mov     rd, a
+04E8	4756	mov     a, ax1[3]
+04E9	4095	mov     rh[14], a
+04EA	4755	mov     a, ax1[2]
+04EB	408A	mov     rh[3], a
+04EC	4754	mov     a, ax1[1]
+04ED	4089	mov     rh[2], a
+04EE	4753	mov     a, ax1[0]
+04EF	4088	mov     rh[1], a
+04F0	4706	mov     a, rg
+04F1	4096	mov     rh[15], a
+04F2	4705	mov     a, rf
+04F3	4090	mov     rh[9], a
+04F4	4704	mov     a, re
+04F5	408F	mov     rh[8], a
+04F6	4703	mov     a, rd
+04F7	408E	mov     rh[7], a
+04F8	2051	call    L0051
+04F9	4715	mov     a, rh[14]
+04FA	4086	mov     rg, a
+04FB	470A	mov     a, rh[3]
+04FC	4085	mov     rf, a
+04FD	4709	mov     a, rh[2]
+04FE	4084	mov     re, a
+04FF	4708	mov     a, rh[1]
+0500	4083	mov     rd, a
+0501	4706	mov     a, rg
+0502	4095	mov     rh[14], a
+0503	4705	mov     a, rf
+0504	408A	mov     rh[3], a
+0505	4704	mov     a, re
+0506	4089	mov     rh[2], a
+0507	4703	mov     a, rd
+0508	4088	mov     rh[1], a
+0509	477C	mov     a, dx1[3]
+050A	4096	mov     rh[15], a
+050B	477B	mov     a, dx1[2]
+050C	4090	mov     rh[9], a
+050D	477A	mov     a, dx1[1]
+050E	408F	mov     rh[8], a
+050F	4779	mov     a, dx1[0]
+0510	408E	mov     rh[7], a
+0511	20CF	call    L00CF
+0512	4715	mov     a, rh[14]
+0513	40C7	mov     doOnce[36], a
+0514	470A	mov     a, rh[3]
+0515	40C6	mov     doOnce[35], a
+0516	4709	mov     a, rh[2]
+0517	40C5	mov     doOnce[34], a
+0518	4708	mov     a, rh[1]
+0519	40C4	mov     doOnce[33], a
+051A	4744	mov     a, doOnce[33]
+051B	C0A8	lmov    g4[0], a
+051D	4745	mov     a, doOnce[34]
+051E	C0A9	lmov    g4[1], a
+0520	4746	mov     a, doOnce[35]
+0521	C0AA	lmov    g4[2], a
+0523	4747	mov     a, doOnce[36]
+0524	C0AB	lmov    g4[3], a
+				;270		
+				;271		h1 = ax2 / ax1;
+0526	475A	mov     a, ax2[3]
+0527	4095	mov     rh[14], a
+0528	4759	mov     a, ax2[2]
+0529	408A	mov     rh[3], a
+052A	4758	mov     a, ax2[1]
+052B	4089	mov     rh[2], a
+052C	4757	mov     a, ax2[0]
+052D	4088	mov     rh[1], a
+052E	4756	mov     a, ax1[3]
+052F	4096	mov     rh[15], a
+0530	4755	mov     a, ax1[2]
+0531	4090	mov     rh[9], a
+0532	4754	mov     a, ax1[1]
+0533	408F	mov     rh[8], a
+0534	4753	mov     a, ax1[0]
+0535	408E	mov     rh[7], a
+0536	2091	call    L0091
+0537	4715	mov     a, rh[14]
+0538	40AF	mov     doOnce[12], a
+0539	470A	mov     a, rh[3]
+053A	40AE	mov     doOnce[11], a
+053B	4709	mov     a, rh[2]
+053C	40AD	mov     doOnce[10], a
+053D	4708	mov     a, rh[1]
+053E	40AC	mov     doOnce[9], a
+053F	472C	mov     a, doOnce[9]
+0540	C0A4	lmov    h1[0], a
+0542	472D	mov     a, doOnce[10]
+0543	C0A5	lmov    h1[1], a
+0545	472E	mov     a, doOnce[11]
+0546	C0A6	lmov    h1[2], a
+0548	472F	mov     a, doOnce[12]
+0549	C0A7	lmov    h1[3], a
+				;272		h2 = - ( ax2 * dx1 ) / ax1 + dx2;
+054B	475A	mov     a, ax2[3]
+054C	4095	mov     rh[14], a
+054D	4759	mov     a, ax2[2]
+054E	408A	mov     rh[3], a
+054F	4758	mov     a, ax2[1]
+0550	4089	mov     rh[2], a
+0551	4757	mov     a, ax2[0]
+0552	4088	mov     rh[1], a
+0553	477C	mov     a, dx1[3]
+0554	4096	mov     rh[15], a
+0555	477B	mov     a, dx1[2]
+0556	4090	mov     rh[9], a
+0557	477A	mov     a, dx1[1]
+0558	408F	mov     rh[8], a
+0559	4779	mov     a, dx1[0]
+055A	408E	mov     rh[7], a
+055B	2051	call    L0051
+055C	4715	mov     a, rh[14]
+055D	4086	mov     rg, a
+055E	470A	mov     a, rh[3]
+055F	4085	mov     rf, a
+0560	4709	mov     a, rh[2]
+0561	4084	mov     re, a
+0562	4708	mov     a, rh[1]
+0563	4083	mov     rd, a
+0564	4705	mov     a, rf
+0565	4506	or      a, rg
+0566	0F80	mov     a, 80H
+0567	390A	snz     Z
+0568	4486	xorm    a, rg
+0569	4706	mov     a, rg
+056A	4095	mov     rh[14], a
+056B	4705	mov     a, rf
+056C	408A	mov     rh[3], a
+056D	4704	mov     a, re
+056E	4089	mov     rh[2], a
+056F	4703	mov     a, rd
+0570	4088	mov     rh[1], a
+0571	4756	mov     a, ax1[3]
+0572	4096	mov     rh[15], a
+0573	4755	mov     a, ax1[2]
+0574	4090	mov     rh[9], a
+0575	4754	mov     a, ax1[1]
+0576	408F	mov     rh[8], a
+0577	4753	mov     a, ax1[0]
+0578	408E	mov     rh[7], a
+0579	2091	call    L0091
+057A	4715	mov     a, rh[14]
+057B	4086	mov     rg, a
+057C	470A	mov     a, rh[3]
+057D	4085	mov     rf, a
+057E	4709	mov     a, rh[2]
+057F	4084	mov     re, a
+0580	4708	mov     a, rh[1]
+0581	4083	mov     rd, a
+0582	4706	mov     a, rg
+0583	4095	mov     rh[14], a
+0584	4705	mov     a, rf
+0585	408A	mov     rh[3], a
+0586	4704	mov     a, re
+0587	4089	mov     rh[2], a
+0588	4703	mov     a, rd
+0589	4088	mov     rh[1], a
+058A	475E	mov     a, dx2[3]
+058B	4096	mov     rh[15], a
+058C	475D	mov     a, dx2[2]
+058D	4090	mov     rh[9], a
+058E	475C	mov     a, dx2[1]
+058F	408F	mov     rh[8], a
+0590	475B	mov     a, dx2[0]
+0591	408E	mov     rh[7], a
+0592	20CF	call    L00CF
+0593	4715	mov     a, rh[14]
+0594	40CB	mov     doOnce[40], a
+0595	470A	mov     a, rh[3]
+0596	40CA	mov     doOnce[39], a
+0597	4709	mov     a, rh[2]
+0598	40C9	mov     doOnce[38], a
+0599	4708	mov     a, rh[1]
+059A	40C8	mov     doOnce[37], a
+059B	4748	mov     a, doOnce[37]
+059C	C0A0	lmov    h2[0], a
+059E	4749	mov     a, doOnce[38]
+059F	C0A1	lmov    h2[1], a
+05A1	474A	mov     a, doOnce[39]
+05A2	C0A2	lmov    h2[2], a
+05A4	474B	mov     a, doOnce[40]
+05A5	C0A3	lmov    h2[3], a
+				;273		
+				;274		j1 = ax3 / ax2;
+05A7	4766	mov     a, ax3[3]
+05A8	4095	mov     rh[14], a
+05A9	4765	mov     a, ax3[2]
+05AA	408A	mov     rh[3], a
+05AB	4764	mov     a, ax3[1]
+05AC	4089	mov     rh[2], a
+05AD	4763	mov     a, ax3[0]
+05AE	4088	mov     rh[1], a
+05AF	475A	mov     a, ax2[3]
+05B0	4096	mov     rh[15], a
+05B1	4759	mov     a, ax2[2]
+05B2	4090	mov     rh[9], a
+05B3	4758	mov     a, ax2[1]
+05B4	408F	mov     rh[8], a
+05B5	4757	mov     a, ax2[0]
+05B6	408E	mov     rh[7], a
+05B7	2091	call    L0091
+05B8	4715	mov     a, rh[14]
+05B9	40B7	mov     doOnce[20], a
+05BA	470A	mov     a, rh[3]
+05BB	40B6	mov     doOnce[19], a
+05BC	4709	mov     a, rh[2]
+05BD	40B5	mov     doOnce[18], a
+05BE	4708	mov     a, rh[1]
+05BF	40B4	mov     doOnce[17], a
+05C0	4734	mov     a, doOnce[17]
+05C1	C09C	lmov    j1[0], a
+05C3	4735	mov     a, doOnce[18]
+05C4	C09D	lmov    j1[1], a
+05C6	4736	mov     a, doOnce[19]
+05C7	C09E	lmov    j1[2], a
+05C9	4737	mov     a, doOnce[20]
+05CA	C09F	lmov    j1[3], a
+				;275		j2 = - ( ax3 * dx2 )/ ax2 + dx3;
+05CC	4766	mov     a, ax3[3]
+05CD	4095	mov     rh[14], a
+05CE	4765	mov     a, ax3[2]
+05CF	408A	mov     rh[3], a
+05D0	4764	mov     a, ax3[1]
+05D1	4089	mov     rh[2], a
+05D2	4763	mov     a, ax3[0]
+05D3	4088	mov     rh[1], a
+05D4	475E	mov     a, dx2[3]
+05D5	4096	mov     rh[15], a
+05D6	475D	mov     a, dx2[2]
+05D7	4090	mov     rh[9], a
+05D8	475C	mov     a, dx2[1]
+05D9	408F	mov     rh[8], a
+05DA	475B	mov     a, dx2[0]
+05DB	408E	mov     rh[7], a
+05DC	2051	call    L0051
+05DD	4715	mov     a, rh[14]
+05DE	4086	mov     rg, a
+05DF	470A	mov     a, rh[3]
+05E0	4085	mov     rf, a
+05E1	4709	mov     a, rh[2]
+05E2	4084	mov     re, a
+05E3	4708	mov     a, rh[1]
+05E4	4083	mov     rd, a
+05E5	4705	mov     a, rf
+05E6	4506	or      a, rg
+05E7	0F80	mov     a, 80H
+05E8	390A	snz     Z
+05E9	4486	xorm    a, rg
+05EA	4706	mov     a, rg
+05EB	4095	mov     rh[14], a
+05EC	4705	mov     a, rf
+05ED	408A	mov     rh[3], a
+05EE	4704	mov     a, re
+05EF	4089	mov     rh[2], a
+05F0	4703	mov     a, rd
+05F1	4088	mov     rh[1], a
+05F2	475A	mov     a, ax2[3]
+05F3	4096	mov     rh[15], a
+05F4	4759	mov     a, ax2[2]
+05F5	4090	mov     rh[9], a
+05F6	4758	mov     a, ax2[1]
+05F7	408F	mov     rh[8], a
+05F8	4757	mov     a, ax2[0]
+05F9	408E	mov     rh[7], a
+05FA	2091	call    L0091
+05FB	4715	mov     a, rh[14]
+05FC	4086	mov     rg, a
+05FD	470A	mov     a, rh[3]
+05FE	4085	mov     rf, a
+05FF	4709	mov     a, rh[2]
+0600	4084	mov     re, a
+0601	4708	mov     a, rh[1]
+0602	4083	mov     rd, a
+0603	4706	mov     a, rg
+0604	4095	mov     rh[14], a
+0605	4705	mov     a, rf
+0606	408A	mov     rh[3], a
+0607	4704	mov     a, re
+0608	4089	mov     rh[2], a
+0609	4703	mov     a, rd
+060A	4088	mov     rh[1], a
+060B	4778	mov     a, dx3[3]
+060C	4096	mov     rh[15], a
+060D	4777	mov     a, dx3[2]
+060E	4090	mov     rh[9], a
+060F	4776	mov     a, dx3[1]
+0610	408F	mov     rh[8], a
+0611	4775	mov     a, dx3[0]
+0612	408E	mov     rh[7], a
+0613	20CF	call    L00CF
+0614	4715	mov     a, rh[14]
+0615	40AB	mov     doOnce[8], a
+0616	470A	mov     a, rh[3]
+0617	40AA	mov     doOnce[7], a
+0618	4709	mov     a, rh[2]
+0619	40A9	mov     doOnce[6], a
+061A	4708	mov     a, rh[1]
+061B	40A8	mov     doOnce[5], a
+061C	4728	mov     a, doOnce[5]
+061D	C098	lmov    j2[0], a
+061F	4729	mov     a, doOnce[6]
+0620	C099	lmov    j2[1], a
+0622	472A	mov     a, doOnce[7]
+0623	C09A	lmov    j2[2], a
+0625	472B	mov     a, doOnce[8]
+0626	C09B	lmov    j2[3], a
+				;276	
+				;277	//	u1 = x2 * x2 * g1 + x2 * g2 + x3 * g3 + x1 * c1 * h1 + x2 * c2 * j1 - x1 * A - x2 * c1 * A - x3 * c2 * A;
+				;278	//	x1n = g1 * x2 * x2 + g2 * x2 + g3 * x3 + g4;
+				;279	//	x2n = h1 * x1 + h2;
+				;280	//	x3n = j1 * x2 + j2;
+				;281	
+				;282		u2 = -(y2 * y2) * g1 - y2 * g2 - y3 * g3 - y1 * c1 * h1 - y2 * c2 * j1 + y1 * A + y2 * c1 * A + y3 * c2 * A;
+0628	4752	mov     a, y2[3]
+0629	4095	mov     rh[14], a
+062A	4751	mov     a, y2[2]
+062B	408A	mov     rh[3], a
+062C	4750	mov     a, y2[1]
+062D	4089	mov     rh[2], a
+062E	474F	mov     a, y2[0]
+062F	4088	mov     rh[1], a
+0630	473B	mov     a, doOnce[24]
+0631	4096	mov     rh[15], a
+0632	473A	mov     a, doOnce[23]
+0633	4090	mov     rh[9], a
+0634	4739	mov     a, doOnce[22]
+0635	408F	mov     rh[8], a
+0636	4738	mov     a, doOnce[21]
+0637	408E	mov     rh[7], a
+0638	2051	call    L0051
+0639	4715	mov     a, rh[14]
+063A	40BB	mov     doOnce[24], a
+063B	470A	mov     a, rh[3]
+063C	40BA	mov     doOnce[23], a
+063D	4709	mov     a, rh[2]
+063E	40B9	mov     doOnce[22], a
+063F	4708	mov     a, rh[1]
+0640	40B8	mov     doOnce[21], a
+0641	476B	mov     a, y3[3]
+0642	4095	mov     rh[14], a
+0643	476A	mov     a, y3[2]
+0644	408A	mov     rh[3], a
+0645	4769	mov     a, y3[1]
+0646	4089	mov     rh[2], a
+0647	4768	mov     a, y3[0]
+0648	4088	mov     rh[1], a
+0649	473F	mov     a, doOnce[28]
+064A	4096	mov     rh[15], a
+064B	473E	mov     a, doOnce[27]
+064C	4090	mov     rh[9], a
+064D	473D	mov     a, doOnce[26]
+064E	408F	mov     rh[8], a
+064F	473C	mov     a, doOnce[25]
+0650	408E	mov     rh[7], a
+0651	2051	call    L0051
+0652	4715	mov     a, rh[14]
+0653	40BF	mov     doOnce[28], a
+0654	470A	mov     a, rh[3]
+0655	40BE	mov     doOnce[27], a
+0656	4709	mov     a, rh[2]
+0657	40BD	mov     doOnce[26], a
+0658	4708	mov     a, rh[1]
+0659	40BC	mov     doOnce[25], a
+065A	4752	mov     a, y2[3]
+065B	4095	mov     rh[14], a
+065C	4751	mov     a, y2[2]
+065D	408A	mov     rh[3], a
+065E	4750	mov     a, y2[1]
+065F	4089	mov     rh[2], a
+0660	474F	mov     a, y2[0]
+0661	4088	mov     rh[1], a
+0662	4752	mov     a, y2[3]
+0663	4096	mov     rh[15], a
+0664	4751	mov     a, y2[2]
+0665	4090	mov     rh[9], a
+0666	4750	mov     a, y2[1]
+0667	408F	mov     rh[8], a
+0668	474F	mov     a, y2[0]
+0669	408E	mov     rh[7], a
+066A	2051	call    L0051
+066B	4715	mov     a, rh[14]
+066C	4086	mov     rg, a
+066D	470A	mov     a, rh[3]
+066E	4085	mov     rf, a
+066F	4709	mov     a, rh[2]
+0670	4084	mov     re, a
+0671	4708	mov     a, rh[1]
+0672	4083	mov     rd, a
+0673	4705	mov     a, rf
+0674	4506	or      a, rg
+0675	0F80	mov     a, 80H
+0676	390A	snz     Z
+0677	4486	xorm    a, rg
+0678	4706	mov     a, rg
+0679	4095	mov     rh[14], a
+067A	4705	mov     a, rf
+067B	408A	mov     rh[3], a
+067C	4704	mov     a, re
+067D	4089	mov     rh[2], a
+067E	4703	mov     a, rd
+067F	4088	mov     rh[1], a
+0680	4723	mov     a, doOnce
+0681	4096	mov     rh[15], a
+0682	4722	mov     a, IEEE754Val[3]
+0683	4090	mov     rh[9], a
+0684	4721	mov     a, IEEE754Val[2]
+0685	408F	mov     rh[8], a
+0686	4720	mov     a, IEEE754Val[1]
+0687	408E	mov     rh[7], a
+0688	2051	call    L0051
+0689	4715	mov     a, rh[14]
+068A	4086	mov     rg, a
+068B	470A	mov     a, rh[3]
+068C	4085	mov     rf, a
+068D	4709	mov     a, rh[2]
+068E	4084	mov     re, a
+068F	4708	mov     a, rh[1]
+0690	4083	mov     rd, a
+0691	4706	mov     a, rg
+0692	4095	mov     rh[14], a
+0693	4705	mov     a, rf
+0694	408A	mov     rh[3], a
+0695	4704	mov     a, re
+0696	4089	mov     rh[2], a
+0697	4703	mov     a, rd
+0698	4088	mov     rh[1], a
+0699	473B	mov     a, doOnce[24]
+069A	4096	mov     rh[15], a
+069B	473A	mov     a, doOnce[23]
+069C	4090	mov     rh[9], a
+069D	4739	mov     a, doOnce[22]
+069E	408F	mov     rh[8], a
+069F	4738	mov     a, doOnce[21]
+06A0	408E	mov     rh[7], a
+06A1	20CD	call    L00CD
+06A2	4715	mov     a, rh[14]
+06A3	4086	mov     rg, a
+06A4	470A	mov     a, rh[3]
+06A5	4085	mov     rf, a
+06A6	4709	mov     a, rh[2]
+06A7	4084	mov     re, a
+06A8	4708	mov     a, rh[1]
+06A9	4083	mov     rd, a
+06AA	4706	mov     a, rg
+06AB	4095	mov     rh[14], a
+06AC	4705	mov     a, rf
+06AD	408A	mov     rh[3], a
+06AE	4704	mov     a, re
+06AF	4089	mov     rh[2], a
+06B0	4703	mov     a, rd
+06B1	4088	mov     rh[1], a
+06B2	473F	mov     a, doOnce[28]
+06B3	4096	mov     rh[15], a
+06B4	473E	mov     a, doOnce[27]
+06B5	4090	mov     rh[9], a
+06B6	473D	mov     a, doOnce[26]
+06B7	408F	mov     rh[8], a
+06B8	473C	mov     a, doOnce[25]
+06B9	408E	mov     rh[7], a
+06BA	20CD	call    L00CD
+06BB	4715	mov     a, rh[14]
+06BC	40B3	mov     doOnce[16], a
+06BD	470A	mov     a, rh[3]
+06BE	40B2	mov     doOnce[15], a
+06BF	4709	mov     a, rh[2]
+06C0	40B1	mov     doOnce[14], a
+06C1	4708	mov     a, rh[1]
+06C2	40B0	mov     doOnce[13], a
+06C3	4762	mov     a, y1[3]
+06C4	4095	mov     rh[14], a
+06C5	4761	mov     a, y1[2]
+06C6	408A	mov     rh[3], a
+06C7	4760	mov     a, y1[1]
+06C8	4089	mov     rh[2], a
+06C9	475F	mov     a, y1[0]
+06CA	4088	mov     rh[1], a
+06CB	C707	lmov    a, c1[3]
+06CD	4096	mov     rh[15], a
+06CE	C706	lmov    a, c1[2]
+06D0	4090	mov     rh[9], a
+06D1	C705	lmov    a, c1[1]
+06D3	408F	mov     rh[8], a
+06D4	C704	lmov    a, c1[0]
+06D6	408E	mov     rh[7], a
+06D7	2051	call    L0051
+06D8	4715	mov     a, rh[14]
+06D9	4086	mov     rg, a
+06DA	470A	mov     a, rh[3]
+06DB	4085	mov     rf, a
+06DC	4709	mov     a, rh[2]
+06DD	4084	mov     re, a
+06DE	4708	mov     a, rh[1]
+06DF	4083	mov     rd, a
+06E0	4706	mov     a, rg
+06E1	4095	mov     rh[14], a
+06E2	4705	mov     a, rf
+06E3	408A	mov     rh[3], a
+06E4	4704	mov     a, re
+06E5	4089	mov     rh[2], a
+06E6	4703	mov     a, rd
+06E7	4088	mov     rh[1], a
+06E8	472F	mov     a, doOnce[12]
+06E9	4096	mov     rh[15], a
+06EA	472E	mov     a, doOnce[11]
+06EB	4090	mov     rh[9], a
+06EC	472D	mov     a, doOnce[10]
+06ED	408F	mov     rh[8], a
+06EE	472C	mov     a, doOnce[9]
+06EF	408E	mov     rh[7], a
+06F0	2051	call    L0051
+06F1	4715	mov     a, rh[14]
+06F2	4086	mov     rg, a
+06F3	470A	mov     a, rh[3]
+06F4	4085	mov     rf, a
+06F5	4709	mov     a, rh[2]
+06F6	4084	mov     re, a
+06F7	4708	mov     a, rh[1]
+06F8	4083	mov     rd, a
+06F9	4733	mov     a, doOnce[16]
+06FA	4095	mov     rh[14], a
+06FB	4732	mov     a, doOnce[15]
+06FC	408A	mov     rh[3], a
+06FD	4731	mov     a, doOnce[14]
+06FE	4089	mov     rh[2], a
+06FF	4730	mov     a, doOnce[13]
+0700	4088	mov     rh[1], a
+0701	4706	mov     a, rg
+0702	4096	mov     rh[15], a
+0703	4705	mov     a, rf
+0704	4090	mov     rh[9], a
+0705	4704	mov     a, re
+0706	408F	mov     rh[8], a
+0707	4703	mov     a, rd
+0708	408E	mov     rh[7], a
+0709	20CD	call    L00CD
+070A	4715	mov     a, rh[14]
+070B	40B3	mov     doOnce[16], a
+070C	470A	mov     a, rh[3]
+070D	40B2	mov     doOnce[15], a
+070E	4709	mov     a, rh[2]
+070F	40B1	mov     doOnce[14], a
+0710	4708	mov     a, rh[1]
+0711	40B0	mov     doOnce[13], a
+0712	4752	mov     a, y2[3]
+0713	4095	mov     rh[14], a
+0714	4751	mov     a, y2[2]
+0715	408A	mov     rh[3], a
+0716	4750	mov     a, y2[1]
+0717	4089	mov     rh[2], a
+0718	474F	mov     a, y2[0]
+0719	4088	mov     rh[1], a
+071A	C703	lmov    a, c2[3]
+071C	4096	mov     rh[15], a
+071D	C702	lmov    a, c2[2]
+071F	4090	mov     rh[9], a
+0720	C701	lmov    a, c2[1]
+0722	408F	mov     rh[8], a
+0723	C700	lmov    a, c2[0]
+0725	408E	mov     rh[7], a
+0726	2051	call    L0051
+0727	4715	mov     a, rh[14]
+0728	4086	mov     rg, a
+0729	470A	mov     a, rh[3]
+072A	4085	mov     rf, a
+072B	4709	mov     a, rh[2]
+072C	4084	mov     re, a
+072D	4708	mov     a, rh[1]
+072E	4083	mov     rd, a
+072F	4706	mov     a, rg
+0730	4095	mov     rh[14], a
+0731	4705	mov     a, rf
+0732	408A	mov     rh[3], a
+0733	4704	mov     a, re
+0734	4089	mov     rh[2], a
+0735	4703	mov     a, rd
+0736	4088	mov     rh[1], a
+0737	4737	mov     a, doOnce[20]
+0738	4096	mov     rh[15], a
+0739	4736	mov     a, doOnce[19]
+073A	4090	mov     rh[9], a
+073B	4735	mov     a, doOnce[18]
+073C	408F	mov     rh[8], a
+073D	4734	mov     a, doOnce[17]
+073E	408E	mov     rh[7], a
+073F	2051	call    L0051
+0740	4715	mov     a, rh[14]
+0741	4086	mov     rg, a
+0742	470A	mov     a, rh[3]
+0743	4085	mov     rf, a
+0744	4709	mov     a, rh[2]
+0745	4084	mov     re, a
+0746	4708	mov     a, rh[1]
+0747	4083	mov     rd, a
+0748	4733	mov     a, doOnce[16]
+0749	4095	mov     rh[14], a
+074A	4732	mov     a, doOnce[15]
+074B	408A	mov     rh[3], a
+074C	4731	mov     a, doOnce[14]
+074D	4089	mov     rh[2], a
+074E	4730	mov     a, doOnce[13]
+074F	4088	mov     rh[1], a
+0750	4706	mov     a, rg
+0751	4096	mov     rh[15], a
+0752	4705	mov     a, rf
+0753	4090	mov     rh[9], a
+0754	4704	mov     a, re
+0755	408F	mov     rh[8], a
+0756	4703	mov     a, rd
+0757	408E	mov     rh[7], a
+0758	20CD	call    L00CD
+0759	4715	mov     a, rh[14]
+075A	40B3	mov     doOnce[16], a
+075B	470A	mov     a, rh[3]
+075C	40B2	mov     doOnce[15], a
+075D	4709	mov     a, rh[2]
+075E	40B1	mov     doOnce[14], a
+075F	4708	mov     a, rh[1]
+0760	40B0	mov     doOnce[13], a
+0761	4762	mov     a, y1[3]
+0762	4095	mov     rh[14], a
+0763	4761	mov     a, y1[2]
+0764	408A	mov     rh[3], a
+0765	4760	mov     a, y1[1]
+0766	4089	mov     rh[2], a
+0767	475F	mov     a, y1[0]
+0768	4088	mov     rh[1], a
+0769	476F	mov     a, A[3]
+076A	4096	mov     rh[15], a
+076B	476E	mov     a, A[2]
+076C	4090	mov     rh[9], a
+076D	476D	mov     a, A[1]
+076E	408F	mov     rh[8], a
+076F	476C	mov     a, A[0]
+0770	408E	mov     rh[7], a
+0771	2051	call    L0051
+0772	4715	mov     a, rh[14]
+0773	4086	mov     rg, a
+0774	470A	mov     a, rh[3]
+0775	4085	mov     rf, a
+0776	4709	mov     a, rh[2]
+0777	4084	mov     re, a
+0778	4708	mov     a, rh[1]
+0779	4083	mov     rd, a
+077A	4733	mov     a, doOnce[16]
+077B	4095	mov     rh[14], a
+077C	4732	mov     a, doOnce[15]
+077D	408A	mov     rh[3], a
+077E	4731	mov     a, doOnce[14]
+077F	4089	mov     rh[2], a
+0780	4730	mov     a, doOnce[13]
+0781	4088	mov     rh[1], a
+0782	4706	mov     a, rg
+0783	4096	mov     rh[15], a
+0784	4705	mov     a, rf
+0785	4090	mov     rh[9], a
+0786	4704	mov     a, re
+0787	408F	mov     rh[8], a
+0788	4703	mov     a, rd
+0789	408E	mov     rh[7], a
+078A	20CF	call    L00CF
+078B	4715	mov     a, rh[14]
+078C	40B3	mov     doOnce[16], a
+078D	470A	mov     a, rh[3]
+078E	40B2	mov     doOnce[15], a
+078F	4709	mov     a, rh[2]
+0790	40B1	mov     doOnce[14], a
+0791	4708	mov     a, rh[1]
+0792	40B0	mov     doOnce[13], a
+0793	4752	mov     a, y2[3]
+0794	4095	mov     rh[14], a
+0795	4751	mov     a, y2[2]
+0796	408A	mov     rh[3], a
+0797	4750	mov     a, y2[1]
+0798	4089	mov     rh[2], a
+0799	474F	mov     a, y2[0]
+079A	4088	mov     rh[1], a
+079B	C707	lmov    a, c1[3]
+079D	4096	mov     rh[15], a
+079E	C706	lmov    a, c1[2]
+07A0	4090	mov     rh[9], a
+07A1	C705	lmov    a, c1[1]
+07A3	408F	mov     rh[8], a
+07A4	C704	lmov    a, c1[0]
+07A6	408E	mov     rh[7], a
+07A7	2051	call    L0051
+07A8	4715	mov     a, rh[14]
+07A9	4086	mov     rg, a
+07AA	470A	mov     a, rh[3]
+07AB	4085	mov     rf, a
+07AC	4709	mov     a, rh[2]
+07AD	4084	mov     re, a
+07AE	4708	mov     a, rh[1]
+07AF	4083	mov     rd, a
+07B0	4706	mov     a, rg
+07B1	4095	mov     rh[14], a
+07B2	4705	mov     a, rf
+07B3	408A	mov     rh[3], a
+07B4	4704	mov     a, re
+07B5	4089	mov     rh[2], a
+07B6	4703	mov     a, rd
+07B7	4088	mov     rh[1], a
+07B8	476F	mov     a, A[3]
+07B9	4096	mov     rh[15], a
+07BA	476E	mov     a, A[2]
+07BB	4090	mov     rh[9], a
+07BC	476D	mov     a, A[1]
+07BD	408F	mov     rh[8], a
+07BE	476C	mov     a, A[0]
+07BF	408E	mov     rh[7], a
+07C0	2051	call    L0051
+07C1	4715	mov     a, rh[14]
+07C2	4086	mov     rg, a
+07C3	470A	mov     a, rh[3]
+07C4	4085	mov     rf, a
+07C5	4709	mov     a, rh[2]
+07C6	4084	mov     re, a
+07C7	4708	mov     a, rh[1]
+07C8	4083	mov     rd, a
+07C9	4733	mov     a, doOnce[16]
+07CA	4095	mov     rh[14], a
+07CB	4732	mov     a, doOnce[15]
+07CC	408A	mov     rh[3], a
+07CD	4731	mov     a, doOnce[14]
+07CE	4089	mov     rh[2], a
+07CF	4730	mov     a, doOnce[13]
+07D0	4088	mov     rh[1], a
+07D1	4706	mov     a, rg
+07D2	4096	mov     rh[15], a
+07D3	4705	mov     a, rf
+07D4	4090	mov     rh[9], a
+07D5	4704	mov     a, re
+07D6	408F	mov     rh[8], a
+07D7	4703	mov     a, rd
+07D8	408E	mov     rh[7], a
+07D9	20CF	call    L00CF
+07DA	4715	mov     a, rh[14]
+07DB	40C3	mov     doOnce[32], a
+07DC	470A	mov     a, rh[3]
+07DD	40C2	mov     doOnce[31], a
+07DE	4709	mov     a, rh[2]
+07DF	40C1	mov     doOnce[30], a
+07E0	4708	mov     a, rh[1]
+07E1	40C0	mov     doOnce[29], a
+07E2	476B	mov     a, y3[3]
+07E3	4095	mov     rh[14], a
+07E4	476A	mov     a, y3[2]
+07E5	408A	mov     rh[3], a
+07E6	4769	mov     a, y3[1]
+07E7	4089	mov     rh[2], a
+07E8	4768	mov     a, y3[0]
+07E9	4088	mov     rh[1], a
+07EA	C703	lmov    a, c2[3]
+07EC	4096	mov     rh[15], a
+07ED	C702	lmov    a, c2[2]
+07EF	4090	mov     rh[9], a
+07F0	C701	lmov    a, c2[1]
+07F2	408F	mov     rh[8], a
+07F3	C700	lmov    a, c2[0]
+07F5	408E	mov     rh[7], a
+07F6	2051	call    L0051
+07F7	4715	mov     a, rh[14]
+07F8	4086	mov     rg, a
+07F9	470A	mov     a, rh[3]
+07FA	4085	mov     rf, a
+07FB	4709	mov     a, rh[2]
+07FC	4084	mov     re, a
+07FD	4708	mov     a, rh[1]
+07FE	4083	mov     rd, a
+07FF	4706	mov     a, rg
+0800	4095	mov     rh[14], a
+0801	4705	mov     a, rf
+0802	408A	mov     rh[3], a
+0803	4704	mov     a, re
+0804	4089	mov     rh[2], a
+0805	4703	mov     a, rd
+0806	4088	mov     rh[1], a
+0807	476F	mov     a, A[3]
+0808	4096	mov     rh[15], a
+0809	476E	mov     a, A[2]
+080A	4090	mov     rh[9], a
+080B	476D	mov     a, A[1]
+080C	408F	mov     rh[8], a
+080D	476C	mov     a, A[0]
+080E	408E	mov     rh[7], a
+080F	2051	call    L0051
+0810	4715	mov     a, rh[14]
+0811	4086	mov     rg, a
+0812	470A	mov     a, rh[3]
+0813	4085	mov     rf, a
+0814	4709	mov     a, rh[2]
+0815	4084	mov     re, a
+0816	4708	mov     a, rh[1]
+0817	4083	mov     rd, a
+0818	4743	mov     a, doOnce[32]
+0819	4095	mov     rh[14], a
+081A	4742	mov     a, doOnce[31]
+081B	408A	mov     rh[3], a
+081C	4741	mov     a, doOnce[30]
+081D	4089	mov     rh[2], a
+081E	4740	mov     a, doOnce[29]
+081F	4088	mov     rh[1], a
+0820	4706	mov     a, rg
+0821	4096	mov     rh[15], a
+0822	4705	mov     a, rf
+0823	4090	mov     rh[9], a
+0824	4704	mov     a, re
+0825	408F	mov     rh[8], a
+0826	4703	mov     a, rd
+0827	408E	mov     rh[7], a
+0828	20CF	call    L00CF
+0829	4715	mov     a, rh[14]
+082A	4086	mov     rg, a
+082B	470A	mov     a, rh[3]
+082C	4085	mov     rf, a
+082D	4709	mov     a, rh[2]
+082E	4084	mov     re, a
+082F	4708	mov     a, rh[1]
+0830	4083	mov     rd, a
+0831	4703	mov     a, rd
+0832	C094	lmov    u2[0], a
+0834	4704	mov     a, re
+0835	C095	lmov    u2[1], a
+0837	4705	mov     a, rf
+0838	C096	lmov    u2[2], a
+083A	4706	mov     a, rg
+083B	C097	lmov    u2[3], a
+				;283		
+				;284		y1n = g1 * y2 * y2 + g2 * y2 + g3 * y3 + g4 + u1 + u2 ;//
+083D	4723	mov     a, doOnce
+083E	4095	mov     rh[14], a
+083F	4722	mov     a, IEEE754Val[3]
+0840	408A	mov     rh[3], a
+0841	4721	mov     a, IEEE754Val[2]
+0842	4089	mov     rh[2], a
+0843	4720	mov     a, IEEE754Val[1]
+0844	4088	mov     rh[1], a
+0845	4752	mov     a, y2[3]
+0846	4096	mov     rh[15], a
+0847	4751	mov     a, y2[2]
+0848	4090	mov     rh[9], a
+0849	4750	mov     a, y2[1]
+084A	408F	mov     rh[8], a
+084B	474F	mov     a, y2[0]
+084C	408E	mov     rh[7], a
+084D	2051	call    L0051
+084E	4715	mov     a, rh[14]
+084F	40A3	mov     doOnce, a
+0850	470A	mov     a, rh[3]
+0851	40A2	mov     IEEE754Val[3], a
+0852	4709	mov     a, rh[2]
+0853	40A1	mov     IEEE754Val[2], a
+0854	4708	mov     a, rh[1]
+0855	40A0	mov     IEEE754Val[1], a
+0856	4723	mov     a, doOnce
+0857	4095	mov     rh[14], a
+0858	4722	mov     a, IEEE754Val[3]
+0859	408A	mov     rh[3], a
+085A	4721	mov     a, IEEE754Val[2]
+085B	4089	mov     rh[2], a
+085C	4720	mov     a, IEEE754Val[1]
+085D	4088	mov     rh[1], a
+085E	4752	mov     a, y2[3]
+085F	4096	mov     rh[15], a
+0860	4751	mov     a, y2[2]
+0861	4090	mov     rh[9], a
+0862	4750	mov     a, y2[1]
+0863	408F	mov     rh[8], a
+0864	474F	mov     a, y2[0]
+0865	408E	mov     rh[7], a
+0866	2051	call    L0051
+0867	4715	mov     a, rh[14]
+0868	40A3	mov     doOnce, a
+0869	470A	mov     a, rh[3]
+086A	40A2	mov     IEEE754Val[3], a
+086B	4709	mov     a, rh[2]
+086C	40A1	mov     IEEE754Val[2], a
+086D	4708	mov     a, rh[1]
+086E	40A0	mov     IEEE754Val[1], a
+086F	4723	mov     a, doOnce
+0870	4095	mov     rh[14], a
+0871	4722	mov     a, IEEE754Val[3]
+0872	408A	mov     rh[3], a
+0873	4721	mov     a, IEEE754Val[2]
+0874	4089	mov     rh[2], a
+0875	4720	mov     a, IEEE754Val[1]
+0876	4088	mov     rh[1], a
+0877	473B	mov     a, doOnce[24]
+0878	4096	mov     rh[15], a
+0879	473A	mov     a, doOnce[23]
+087A	4090	mov     rh[9], a
+087B	4739	mov     a, doOnce[22]
+087C	408F	mov     rh[8], a
+087D	4738	mov     a, doOnce[21]
+087E	408E	mov     rh[7], a
+087F	20CF	call    L00CF
+0880	4715	mov     a, rh[14]
+0881	40A3	mov     doOnce, a
+0882	470A	mov     a, rh[3]
+0883	40A2	mov     IEEE754Val[3], a
+0884	4709	mov     a, rh[2]
+0885	40A1	mov     IEEE754Val[2], a
+0886	4708	mov     a, rh[1]
+0887	40A0	mov     IEEE754Val[1], a
+0888	4723	mov     a, doOnce
+0889	4095	mov     rh[14], a
+088A	4722	mov     a, IEEE754Val[3]
+088B	408A	mov     rh[3], a
+088C	4721	mov     a, IEEE754Val[2]
+088D	4089	mov     rh[2], a
+088E	4720	mov     a, IEEE754Val[1]
+088F	4088	mov     rh[1], a
+0890	473F	mov     a, doOnce[28]
+0891	4096	mov     rh[15], a
+0892	473E	mov     a, doOnce[27]
+0893	4090	mov     rh[9], a
+0894	473D	mov     a, doOnce[26]
+0895	408F	mov     rh[8], a
+0896	473C	mov     a, doOnce[25]
+0897	408E	mov     rh[7], a
+0898	20CF	call    L00CF
+0899	4715	mov     a, rh[14]
+089A	40A3	mov     doOnce, a
+089B	470A	mov     a, rh[3]
+089C	40A2	mov     IEEE754Val[3], a
+089D	4709	mov     a, rh[2]
+089E	40A1	mov     IEEE754Val[2], a
+089F	4708	mov     a, rh[1]
+08A0	40A0	mov     IEEE754Val[1], a
+08A1	4723	mov     a, doOnce
+08A2	4095	mov     rh[14], a
+08A3	4722	mov     a, IEEE754Val[3]
+08A4	408A	mov     rh[3], a
+08A5	4721	mov     a, IEEE754Val[2]
+08A6	4089	mov     rh[2], a
+08A7	4720	mov     a, IEEE754Val[1]
+08A8	4088	mov     rh[1], a
+08A9	4747	mov     a, doOnce[36]
+08AA	4096	mov     rh[15], a
+08AB	4746	mov     a, doOnce[35]
+08AC	4090	mov     rh[9], a
+08AD	4745	mov     a, doOnce[34]
+08AE	408F	mov     rh[8], a
+08AF	4744	mov     a, doOnce[33]
+08B0	408E	mov     rh[7], a
+08B1	20CF	call    L00CF
+08B2	4715	mov     a, rh[14]
+08B3	40A3	mov     doOnce, a
+08B4	470A	mov     a, rh[3]
+08B5	40A2	mov     IEEE754Val[3], a
+08B6	4709	mov     a, rh[2]
+08B7	40A1	mov     IEEE754Val[2], a
+08B8	4708	mov     a, rh[1]
+08B9	40A0	mov     IEEE754Val[1], a
+08BA	4723	mov     a, doOnce
+08BB	4095	mov     rh[14], a
+08BC	4722	mov     a, IEEE754Val[3]
+08BD	408A	mov     rh[3], a
+08BE	4721	mov     a, IEEE754Val[2]
+08BF	4089	mov     rh[2], a
+08C0	4720	mov     a, IEEE754Val[1]
+08C1	4088	mov     rh[1], a
+08C2	471F	mov     a, u1[3]
+08C3	4096	mov     rh[15], a
+08C4	471E	mov     a, u1[2]
+08C5	4090	mov     rh[9], a
+08C6	471D	mov     a, u1[1]
+08C7	408F	mov     rh[8], a
+08C8	471C	mov     a, u1[0]
+08C9	408E	mov     rh[7], a
+08CA	20CF	call    L00CF
+08CB	4715	mov     a, rh[14]
+08CC	40A3	mov     doOnce, a
+08CD	470A	mov     a, rh[3]
+08CE	40A2	mov     IEEE754Val[3], a
+08CF	4709	mov     a, rh[2]
+08D0	40A1	mov     IEEE754Val[2], a
+08D1	4708	mov     a, rh[1]
+08D2	40A0	mov     IEEE754Val[1], a
+08D3	4723	mov     a, doOnce
+08D4	4095	mov     rh[14], a
+08D5	4722	mov     a, IEEE754Val[3]
+08D6	408A	mov     rh[3], a
+08D7	4721	mov     a, IEEE754Val[2]
+08D8	4089	mov     rh[2], a
+08D9	4720	mov     a, IEEE754Val[1]
+08DA	4088	mov     rh[1], a
+08DB	4706	mov     a, rg
+08DC	4096	mov     rh[15], a
+08DD	4705	mov     a, rf
+08DE	4090	mov     rh[9], a
+08DF	4704	mov     a, re
+08E0	408F	mov     rh[8], a
+08E1	4703	mov     a, rd
+08E2	408E	mov     rh[7], a
+08E3	20CF	call    L00CF
+08E4	4715	mov     a, rh[14]
+08E5	40A3	mov     doOnce, a
+08E6	470A	mov     a, rh[3]
+08E7	40A2	mov     IEEE754Val[3], a
+08E8	4709	mov     a, rh[2]
+08E9	40A1	mov     IEEE754Val[2], a
+08EA	4708	mov     a, rh[1]
+08EB	40A0	mov     IEEE754Val[1], a
+08EC	4720	mov     a, IEEE754Val[1]
+08ED	C090	lmov    y1n[0], a
+08EF	4721	mov     a, IEEE754Val[2]
+08F0	C091	lmov    y1n[1], a
+08F2	4722	mov     a, IEEE754Val[3]
+08F3	C092	lmov    y1n[2], a
+08F5	4723	mov     a, doOnce
+08F6	C093	lmov    y1n[3], a
+				;285		y2n = h1 * y1 + h2;
+08F8	472F	mov     a, doOnce[12]
+08F9	4095	mov     rh[14], a
+08FA	472E	mov     a, doOnce[11]
+08FB	408A	mov     rh[3], a
+08FC	472D	mov     a, doOnce[10]
+08FD	4089	mov     rh[2], a
+08FE	472C	mov     a, doOnce[9]
+08FF	4088	mov     rh[1], a
+0900	4762	mov     a, y1[3]
+0901	4096	mov     rh[15], a
+0902	4761	mov     a, y1[2]
+0903	4090	mov     rh[9], a
+0904	4760	mov     a, y1[1]
+0905	408F	mov     rh[8], a
+0906	475F	mov     a, y1[0]
+0907	408E	mov     rh[7], a
+0908	2051	call    L0051
+0909	4715	mov     a, rh[14]
+090A	4086	mov     rg, a
+090B	470A	mov     a, rh[3]
+090C	4085	mov     rf, a
+090D	4709	mov     a, rh[2]
+090E	4084	mov     re, a
+090F	4708	mov     a, rh[1]
+0910	4083	mov     rd, a
+0911	4706	mov     a, rg
+0912	4095	mov     rh[14], a
+0913	4705	mov     a, rf
+0914	408A	mov     rh[3], a
+0915	4704	mov     a, re
+0916	4089	mov     rh[2], a
+0917	4703	mov     a, rd
+0918	4088	mov     rh[1], a
+0919	474B	mov     a, doOnce[40]
+091A	4096	mov     rh[15], a
+091B	474A	mov     a, doOnce[39]
+091C	4090	mov     rh[9], a
+091D	4749	mov     a, doOnce[38]
+091E	408F	mov     rh[8], a
+091F	4748	mov     a, doOnce[37]
+0920	408E	mov     rh[7], a
+0921	20CF	call    L00CF
+0922	4715	mov     a, rh[14]
+0923	40A7	mov     doOnce[4], a
+0924	470A	mov     a, rh[3]
+0925	40A6	mov     doOnce[3], a
+0926	4709	mov     a, rh[2]
+0927	40A5	mov     doOnce[2], a
+0928	4708	mov     a, rh[1]
+0929	40A4	mov     doOnce[1], a
+092A	4724	mov     a, doOnce[1]
+092B	C08C	lmov    y2n[0], a
+092D	4725	mov     a, doOnce[2]
+092E	C08D	lmov    y2n[1], a
+0930	4726	mov     a, doOnce[3]
+0931	C08E	lmov    y2n[2], a
+0933	4727	mov     a, doOnce[4]
+0934	C08F	lmov    y2n[3], a
+				;286		y3n = j1 * y2 + j2;
+0936	4737	mov     a, doOnce[20]
+0937	4095	mov     rh[14], a
+0938	4736	mov     a, doOnce[19]
+0939	408A	mov     rh[3], a
+093A	4735	mov     a, doOnce[18]
+093B	4089	mov     rh[2], a
+093C	4734	mov     a, doOnce[17]
+093D	4088	mov     rh[1], a
+093E	4752	mov     a, y2[3]
+093F	4096	mov     rh[15], a
+0940	4751	mov     a, y2[2]
+0941	4090	mov     rh[9], a
+0942	4750	mov     a, y2[1]
+0943	408F	mov     rh[8], a
+0944	474F	mov     a, y2[0]
+0945	408E	mov     rh[7], a
+0946	2051	call    L0051
+0947	4715	mov     a, rh[14]
+0948	4086	mov     rg, a
+0949	470A	mov     a, rh[3]
+094A	4085	mov     rf, a
+094B	4709	mov     a, rh[2]
+094C	4084	mov     re, a
+094D	4708	mov     a, rh[1]
+094E	4083	mov     rd, a
+094F	4706	mov     a, rg
+0950	4095	mov     rh[14], a
+0951	4705	mov     a, rf
+0952	408A	mov     rh[3], a
+0953	4704	mov     a, re
+0954	4089	mov     rh[2], a
+0955	4703	mov     a, rd
+0956	4088	mov     rh[1], a
+0957	472B	mov     a, doOnce[8]
+0958	4096	mov     rh[15], a
+0959	472A	mov     a, doOnce[7]
+095A	4090	mov     rh[9], a
+095B	4729	mov     a, doOnce[6]
+095C	408F	mov     rh[8], a
+095D	4728	mov     a, doOnce[5]
+095E	408E	mov     rh[7], a
+095F	20CF	call    L00CF
+0960	4715	mov     a, rh[14]
+0961	4086	mov     rg, a
+0962	470A	mov     a, rh[3]
+0963	4085	mov     rf, a
+0964	4709	mov     a, rh[2]
+0965	4084	mov     re, a
+0966	4708	mov     a, rh[1]
+0967	4083	mov     rd, a
+0968	4703	mov     a, rd
+0969	C088	lmov    y3n[0], a
+096B	4704	mov     a, re
+096C	C089	lmov    y3n[1], a
+096E	4705	mov     a, rf
+096F	C08A	lmov    y3n[2], a
+0971	4706	mov     a, rg
+0972	C08B	lmov    y3n[3], a
+				;287		
+				;288	//	x1 = x1n;
+				;289	//	x2 = x2n;
+				;290	//	x3 = x3n;
+				;291		y1 = y1n;
+0974	4720	mov     a, IEEE754Val[1]
+0975	40DF	mov     y1[0], a
+0976	4721	mov     a, IEEE754Val[2]
+0977	40E0	mov     y1[1], a
+0978	4722	mov     a, IEEE754Val[3]
+0979	40E1	mov     y1[2], a
+097A	4723	mov     a, doOnce
+097B	40E2	mov     y1[3], a
+				;292		y2 = y2n;
+097C	4724	mov     a, doOnce[1]
+097D	40CF	mov     y2[0], a
+097E	4725	mov     a, doOnce[2]
+097F	40D0	mov     y2[1], a
+0980	4726	mov     a, doOnce[3]
+0981	40D1	mov     y2[2], a
+0982	4727	mov     a, doOnce[4]
+0983	40D2	mov     y2[3], a
+				;293		y3 = y3n;
+0984	4703	mov     a, rd
+0985	40E8	mov     y3[0], a
+0986	4704	mov     a, re
+0987	40E9	mov     y3[1], a
+0988	4705	mov     a, rf
+0989	40EA	mov     y3[2], a
+098A	4706	mov     a, rg
+098B	40EB	mov     y3[3], a
+098C	0003	ret
+				;294	}
+				data .SECTION 'DATA'
+				__pa DB DUP (?) ; __pa
+				__pac DB DUP (?) ; __pac
+				__pdpu DB DUP (?) ; __pdpu
+				__pd DB DUP (?) ; __pd
+				__pdc DB DUP (?) ; __pdc
+				__pgpu DB DUP (?) ; __pgpu
+				__pg DB DUP (?) ; __pg
+				__pgc DB DUP (?) ; __pgc
+				__intc0 DB DUP (?) ; __intc0
+				__mfi0 DB DUP (?) ; __mfi0
+				__integ DB DUP (?) ; __integ
+				__wdtc DB DUP (?) ; __wdtc
+				__tm1c0 DB DUP (?) ; __tm1c0
+				__tm1c1 DB DUP (?) ; __tm1c1
+				__tm1c2 DB DUP (?) ; __tm1c2
+				__tm1al DB DUP (?) ; __tm1al
+				__tm1ah DB DUP (?) ; __tm1ah
+				__tm1bl DB DUP (?) ; __tm1bl
+				__tm1bh DB DUP (?) ; __tm1bh
+				__tm3c0 DB DUP (?) ; __tm3c0
+				__tm3c1 DB DUP (?) ; __tm3c1
+				__tm3al DB DUP (?) ; __tm3al
+				__tm3ah DB DUP (?) ; __tm3ah
+				__tm0c0 DB DUP (?) ; __tm0c0
+				__tm0c1 DB DUP (?) ; __tm0c1
+				__tm0al DB DUP (?) ; __tm0al
+				__tm0ah DB DUP (?) ; __tm0ah
+				ra DB DUP (?)
+				rb DB DUP (?)
+				rc DB DUP (?)
+				rd DB DUP (?)
+				re DB DUP (?)
+				rf DB DUP (?)
+				rg DB DUP (?)
+				rh DB DUP (?)
+				r104 DB DUP (?)
+				r204 DB DUP (?)
+				rb04 DB DUP (?)
+				ra04 DB DUP (?)
+				u1 DB 4 DUP (?) ; u1
+				del DB 2 DUP (?) ; del
+				IEEE754Val DB DUP (?) ; IEEE754Val
+				doOnce DB 2 DUP (?) ; doOnce
+				switchCaseNum DB 2 DUP (?) ; switchCaseNum
+				key DB DUP (?) ; key
+				y2 DB 4 DUP (?) ; y2
+				ax1 DB 4 DUP (?) ; ax1
+				ax2 DB 4 DUP (?) ; ax2
+				dx2 DB 4 DUP (?) ; dx2
+				y1 DB 4 DUP (?) ; y1
+				ax3 DB 4 DUP (?) ; ax3
+				b_RX DB DUP (?) ; b_RX
+				y3 DB 4 DUP (?) ; y3
+				A DB 4 DUP (?) ; A
+				u1Val DB DUP (?) ; u1Val
+				RxData DB DUP (?) ; RxData
+				dx3 DB 4 DUP (?) ; dx3
+				dx1 DB 4 DUP (?) ; dx1
+				r304 DB DUP (?)
+				__pcs0 DB DUP (?) ; __pcs0
+				__pcs3 DB DUP (?) ; __pcs3
+				__pds0 DB DUP (?) ; __pds0
+				c2 DB 4 DUP (?) ; c2
+				c1 DB 4 DUP (?) ; c1
+				y3n DB 4 DUP (?) ; y3n
+				y2n DB 4 DUP (?) ; y2n
+				y1n DB 4 DUP (?) ; y1n
+				u2 DB 4 DUP (?) ; u2
+				j2 DB 4 DUP (?) ; j2
+				j1 DB 4 DUP (?) ; j1
+				h2 DB 4 DUP (?) ; h2
+				h1 DB 4 DUP (?) ; h1
+				g4 DB 4 DUP (?) ; g4
+				g3 DB 4 DUP (?) ; g3
+				g2 DB 4 DUP (?) ; g2
+				g1 DB 4 DUP (?) ; g1
+				u1 DB 4 DUP (?) ; u1
