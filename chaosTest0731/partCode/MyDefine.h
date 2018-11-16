@@ -12,13 +12,12 @@
 #define _OpenIRState	_pe6
 #define _OpenIRStateC	_pec6
 #define _OpenIRStatePU	_pepu6
-#define _Relay			_pf3
-#define _RelayC			_pfc3
-#define _RelayPU		_pfpu3
-#define _buzzer			_pf6
-#define _buzzerC		_pfc6
-#define _buzzerPU		_pfpu6
-
+#define _doorRelay		_pf3
+#define _doorRelayC		_pfc3
+#define _doorRelayPU	_pfpu3
+#define _buzzerRelay	_pf4
+#define _buzzerRelayC	_pfc4
+#define _buzzerRelayPU	_pfpu4
 #define	fSYS		8000000	
 #define	BaudRate	9800	
 #define	BITC		(fSYS/BaudRate)					//Bit Interval Time Constant

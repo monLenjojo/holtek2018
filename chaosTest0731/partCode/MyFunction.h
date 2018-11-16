@@ -147,9 +147,9 @@ _Bool getOpenIRState(){
 }
 
 _Bool getBuzzerState(){
-	_buzzerC=0;
-	_buzzerPU=0;
-	if(_buzzer){
+	_buzzerRelayC=0;
+	_buzzerRelayPU=0;
+	if(_buzzerRelay){
 		return 1;
 	}else{
 		return 0;	
@@ -157,20 +157,19 @@ _Bool getBuzzerState(){
 }
 
 void setBuzzerState(_Bool state){
-	_buzzerC=0;
-	_buzzerPU=0;
+	_buzzerRelayC=0;
+	_buzzerRelayPU=0;
 	if(state){
-		_buzzer=1;
+		_buzzerRelay=1;
 	}else{
-		_buzzer=0;
+		_buzzerRelay=0;
 	}
 }
 
-_Bool lockState;
 _Bool getLockState(){//password check
-	_RelayC = 0;
-	_RelayPU = 0;
-	if(_Relay){
+	_doorRelayC = 0;
+	_doorRelayPU = 1;
+	if(_doorRelay){
 		return 1;
 	}else{
 		return 0;
@@ -178,12 +177,12 @@ _Bool getLockState(){//password check
 }
 
 void setLockState(_Bool state){
-	_RelayC = 0;
-	_RelayPU = 0;
+	_doorRelayC = 0;
+	_doorRelayPU = 1;
 	if(state){
-		_Relay = 1;
+		_doorRelay = 1;
 	}else{
-		_Relay = 0;
+		_doorRelay = 0;
 	}	
 }
 
@@ -323,13 +322,4 @@ void getKeyBoard(){
 			changePassword();
 			break;
 	}delay(30);
-}
-
-
-const u16 Pitch_TAB[] = {			      			//音調常數建表區
-		fSYS/(523*2*4),fSYS/(587*2*4),fSYS/(659*2*4),
-		fSYS/(698*2*4),fSYS/(785*2*4),fSYS/(880*2*4),
-		fSYS/(998*2*4),fSYS/(523*4*4)};
-void warning(){
-		
 }
