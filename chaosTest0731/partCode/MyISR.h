@@ -20,19 +20,26 @@ DEFINE_ISR(ISR_ExtINT0,0x04){
 	_t0on=0;
 	_int0f=0;
 }
-DEFINE_ISR(ISR_ExtINT1,0x08){
-	if(getOpenIRState()){
-		if(!getLockState()){
-			while(getOpenIRState()){
-				setBuzzerState(HIGH);
-			}
-			setBuzzerState(LOW);
-		}else{
-			LcdClearLINE2(0);
-			setLockState(LOW);
-		}
+/*DEFINE_ISR(ISR_ExtINT1,0x08){
+	if(_pe6 | _pe7){
+		setBuzzerState(HIGH);	
+	}else{		
+		setBuzzerState(LOW);	
 	}
-}
+	
+
+	if(!getLockState()){
+		while(getOpenIRState()){
+			setBuzzerState(HIGH);
+		}
+		setBuzzerState(LOW);
+	}else{
+		LcdClearLINE2(0);
+		setLockState(LOW);
+		setBuzzerState(LOW);
+	}	
+}*/
+
 /*
 DEFINE_ISR(ISR_ExtINT2,0x30){
 	if(!lockState){

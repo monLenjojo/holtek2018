@@ -1,4 +1,3 @@
-
 void UARTTxData(u8 data){	
 	u8 temp=0b00000001;
 	_tm0al=BITC; _tm0ah=BITC>>8;					//T
@@ -127,12 +126,33 @@ void getFormatKey(union IEEE754* formatUm,union IEEE754* formatX1n){
 }
 
 _Bool getBluetoothState(){
-	_BTstateC=0;
-	_BTstatePU=0;
+	_BTstateC=1;
+	_BTstatePU=1;
 	if(_BTstate){
 		return 1;
 	}else{
 		return 0;
+	}
+}
+void setDTrueLightState(_Bool state){
+	_dTrueLight=0;
+	_dTrueLightC=0;
+	_dTrueLightPU=1;
+	if(state){
+		_dTrueLight=1;
+	}else{
+		_dTrueLight=0;
+	}
+}
+
+void setDFalseLightState(_Bool state){
+	_dFalseLight=0;
+	_dFalseLightC=0;
+	_dFalseLightPU=1;
+	if(state){
+		_dFalseLight=1;
+	}else{
+		_dFalseLight=0;
 	}
 }
 
@@ -148,7 +168,7 @@ _Bool getOpenIRState(){
 
 _Bool getBuzzerState(){
 	_buzzerRelayC=0;
-	_buzzerRelayPU=0;
+	_buzzerRelayPU=1;
 	if(_buzzerRelay){
 		return 1;
 	}else{
@@ -158,7 +178,7 @@ _Bool getBuzzerState(){
 
 void setBuzzerState(_Bool state){
 	_buzzerRelayC=0;
-	_buzzerRelayPU=0;
+	_buzzerRelayPU=1;
 	if(state){
 		_buzzerRelay=1;
 	}else{
@@ -184,142 +204,4 @@ void setLockState(_Bool state){
 	}else{
 		_doorRelay = 0;
 	}	
-}
-
-volatile u8 keyBoard,readTimeVal;
-u8 ScanKey(){
-	u8 i,keyBoard=0;
-	KeyPortC=0xF0; KeyPortPU=0xF0;			   		//IO規劃與提升身電阻致能
-	KeyPort=0b11111110;					        	//Initial Scancode
-	for(i=0;i<=2;i++){	
-		if(!(KeyPort & 1<<4)) break;		     	//Check Column 0
-		keyBoard++;
-		if(!(KeyPort & 1<<5)) break;			   	//Check Column 1
-		keyBoard++;
-		if(!(KeyPort & 1<<6)) break;			  	//Check Column 2
-		keyBoard++;
-		if(!(KeyPort & 1<<7)) break;			  	//Check Column 3
-		keyBoard++;
-		KeyPort<<=1; KeyPort|=0b00000001;	   		//Scancode for Next Row
-	}
-	return keyBoard;	
-}
-
-int keyBoardBuffer[4]={0,0,0,0}, inputKeyBoardBuffer[4]={-1,-1,-1,-1}, keyBoardBufferPtr=0;
-void intiKeyBoard(){
-	keyBoardBufferPtr = 0;
-	int i;
-	for(i=0; i<=3; i++){
-		inputKeyBoardBuffer[i] = -1;
-	}
-}
-
-void inputKeyBoardFull(){
-	int i; _Bool checkIn = 1;
-	for(i=0; i<=3; i++){
-		if(keyBoardBuffer[i] != inputKeyBoardBuffer[i]){
-			checkIn &= 0;
-			i=3;
-		}
-		if(i==3){
-			if(!checkIn){
-				intiKeyBoard();
-				LcdClearLINE2(0);
-			}else{
-				LcdWriteString(LCD_LINE_2,0,"Lock Open");
-				intiKeyBoard();
-				setLockState(HIGH);	
-			}
-		}
-	}
-}
-
-void putValtoBuffer(int inputVal){
-	inputKeyBoardBuffer[keyBoardBufferPtr] = inputVal;
-	keyBoardBufferPtr++;
-	if(keyBoardBufferPtr==4){
-		inputKeyBoardFull();
-		delay(20);
-	}
-}
-
-void clipValtoBuffer(){
-	if(keyBoardBufferPtr!=0){
-		keyBoardBufferPtr--;
-		inputKeyBoardBuffer[keyBoardBufferPtr] = -1;
-		LcdClearLINE2(keyBoardBufferPtr);
-	}
-}
-
-void changePassword(){
-	
-}
-
-void getKeyBoard(){
-	if(getLockState()){
-		LcdClearLINE2(0);
-		setLockState(LOW);
-	}
-	switch(ScanKey()){
-		case 0:
-		//1
-			LcdWriteString(LCD_LINE_2,keyBoardBufferPtr,"1");
-			putValtoBuffer(1);
-			break;
-		case 1:
-		//4
-			LcdWriteString(LCD_LINE_2,keyBoardBufferPtr,"4");
-			putValtoBuffer(4);
-			break;
-		case 2:
-		//7
-			LcdWriteString(LCD_LINE_2,keyBoardBufferPtr,"7");
-			putValtoBuffer(7);
-			break;
-		case 3:
-		//*
-			LcdWriteString(LCD_LINE_2,keyBoardBufferPtr,"*");
-			clipValtoBuffer();
-			break;
-		case 4:
-		//2
-			LcdWriteString(LCD_LINE_2,keyBoardBufferPtr,"2");
-			putValtoBuffer(2);
-			break;
-		case 5:
-		//5
-			LcdWriteString(LCD_LINE_2,keyBoardBufferPtr,"5");
-			putValtoBuffer(5);
-			break;
-		case 6:
-		//8
-			LcdWriteString(LCD_LINE_2,keyBoardBufferPtr,"8");
-			putValtoBuffer(8);
-			break;
-		case 7:
-		//0
-			LcdWriteString(LCD_LINE_2,keyBoardBufferPtr,"0");
-			putValtoBuffer(0);
-			break;
-		case 8:
-		//3
-			LcdWriteString(LCD_LINE_2,keyBoardBufferPtr,"3");
-			putValtoBuffer(3);
-			break;
-		case 9:
-		//6
-			LcdWriteString(LCD_LINE_2,keyBoardBufferPtr,"6");
-			putValtoBuffer(6);
-			break;
-		case 10:
-		//9
-			LcdWriteString(LCD_LINE_2,keyBoardBufferPtr,"9");
-			putValtoBuffer(9);
-			break;
-		case 11:
-		//#
-			LcdWriteString(LCD_LINE_2,keyBoardBufferPtr,"#");
-			changePassword();
-			break;
-	}delay(30);
 }

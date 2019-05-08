@@ -1,4 +1,4 @@
-#include <HT66F70A.h>
+#include "HT66F70A.h"
 #include "MyType.h"
 #include "MyDefine.h"
 void delay(u16 del){	
@@ -6,6 +6,8 @@ void delay(u16 del){
 	for(i=0;i<del;i++) GCC_DELAY(2000);				//Delay del ms @fSYS=8MHz
 }
 #include "LCDThing.h"
+#include "EEPROM.h"
 #include "MyFunction.h"
+#include "keyBoard.h"
 #include "ChaosThing.h"
 #include "MyISR.h"

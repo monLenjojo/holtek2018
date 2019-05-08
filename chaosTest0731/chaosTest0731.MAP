@@ -9,245 +9,256 @@ Input Library File: C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x
 
      Bank    Start     End      Length     Class    AvgIns    Name
      00h     0000h     0001h    0002h      CODE               @code (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     0002h     0002h    0001h      CODE               _changePassword (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
      00h     0004h     0007h    0004h      CODE               @ISR_ExtINT0_code (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     0008h     000bh    0004h      CODE               @ISR_ExtINT1_code (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     000ch     003dh    0032h      CODE               _ISR_ExtINT0 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     003eh     0078h    003bh      CODE               _ISR_ExtINT1 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     0079h     008eh    0016h      CODE               _LcdClearLINE1 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     0095h     00d1h    003dh      CODE               @start (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00d2h     00e9h    0018h      CODE               @builtin_holtek_dtdecode (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     00eah     0129h    0040h      CODE               _builtin_holtek_dtmul (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     012ah     0165h    003ch      CODE               _builtin_holtek_dtdiv (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     0166h     01a3h    003eh      CODE               @builtin_holtek_dtsubadd (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     01a4h     01ceh    002bh      CODE               _builtin_holtek_dtol (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     01cfh     0202h    0034h      CODE               _builtin_holtek_dtnorm (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     0203h     0209h    0007h      CODE               _builtin_holtek_dtinf (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     020ah     0222h    0019h      CODE               @crom (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     0223h     0230h    000eh      CODE               _builtin_holtek_delay_isr00 (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     0231h     0245h    0015h      CODE               _delay (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     0246h     0254h    000fh      CODE               _LcdWrite (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     0255h     0263h    000fh      CODE               _LcdControl (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     0264h     027bh    0018h      CODE               _LcdClearLINE2 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     027ch     029fh    0024h      CODE               _clipValtoBuffer (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     02a0h     02a8h    0009h      CODE               _setLockState (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     02a9h     02b6h    000eh      CODE               _CROM2PROM (CROM2PROM)
-     00h     02b7h     02d7h    0021h      CODE               _LcdWriteMany (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     02d8h     02f5h    001eh      CODE               _strlen (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\v3_lmrmc.lib)
-     00h     02f6h     0321h    002ch      CODE               _LcdWriteString (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     0322h     032ch    000bh      CODE               _intiKeyBoard (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     032dh     0375h    0049h      CODE               _inputKeyBoardFull (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     0376h     039bh    0026h      CODE               _putValtoBuffer (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     039ch     03bdh    0022h      CODE               _ScanKey (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     03beh     03c4h    0007h      CODE               _getLockState (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     03c5h     04bah    00f6h      CODE               _getKeyBoard (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     04bbh     0b62h    06a8h      CODE               _chaosMath (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     0b63h     0bdch    007ah      CODE               _intiChaos (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     0bddh     0c86h    00aah      CODE               _doMath (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     0c87h     0e1ch    0196h      CODE               _getFormatKey (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     0e1dh     0e23h    0007h      CODE               _getBluetoothState (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     0e24h     0e40h    001dh      CODE               _LcdClear (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     0e41h     0e88h    0048h      CODE               _LcdInit (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     0e89h     0f42h    00bah      CODE               _main (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     0f43h     0f4bh    0009h      CODE               _setBuzzerState (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     0f4ch     0f52h    0007h      CODE               _getOpenIRState (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     0f53h     132eh    03dch      CODE               _tryExecuteChaos (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     132fh     14c2h    0194h      CODE               _chaosPartOfMasterX1n (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     14c3h     1717h    0255h      CODE               _chaosPartOfMasterU1 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     1718h     1abbh    03a4h      CODE               _tryLikeConnectChaos (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     1abch     1b1ch    0061h      CODE               _builtin_holtek_divmodsi4_isr00 (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     1b1dh     1bcbh    00afh      CODE               _convInt32ToText (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     1bcch     1bf5h    002ah      CODE               _LcdWriteIntToChar (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     1bf6h     1c19h    0024h      CODE               _LcdWriteChar (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     1c1ah     1c46h    002dh      CODE               _UARTTxData (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     1c47h     1c4dh    0007h      CODE               _getBuzzerState (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     1c4eh     1c64h    0017h      CODE               _tryGetIeee754 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     1c65h     1c72h    000eh      CODE               @ROMDATA_BASE (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\STARTUP1_L.OBJ)
-     01h     0000h     075ah    075bh      CODE               _tryExecuteChaosAllInOne (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     0080h     0080h    0001h      DATA     126       @data_ra (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     0081h     0081h    0001h      DATA     134       @data_rb (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     0082h     0082h    0001h      DATA     98        @data_rc (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     0083h     0083h    0001h      DATA     251       @data_rd (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     0084h     0084h    0001h      DATA     241       @data_re (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0008h     003ah    0033h      CODE               _ISR_ExtINT0 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     003bh     0077h    003dh      CODE               @start (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     0078h     008fh    0018h      CODE               @builtin_holtek_dtdecode (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0090h     00cfh    0040h      CODE               _builtin_holtek_dtmul (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     00d0h     010bh    003ch      CODE               _builtin_holtek_dtdiv (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     010ch     0149h    003eh      CODE               @builtin_holtek_dtsubadd (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     014ah     0174h    002bh      CODE               _builtin_holtek_dtol (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0175h     01a8h    0034h      CODE               _builtin_holtek_dtnorm (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     01a9h     01afh    0007h      CODE               _builtin_holtek_dtinf (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     01b0h     01d1h    0022h      CODE               @crom (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     01d2h     01dfh    000eh      CODE               _builtin_holtek_delay_isr00 (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     01e0h     01f4h    0015h      CODE               _delay (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     01f5h     0203h    000fh      CODE               _LcdWrite (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     0204h     0212h    000fh      CODE               _LcdControl (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     0213h     022ah    0018h      CODE               _LcdClearLINE2 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     022bh     024eh    0024h      CODE               _clipValtoBuffer (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     024fh     0258h    000ah      CODE               _setDTrueLightState (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     0259h     0262h    000ah      CODE               _setDFalseLightState (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     0263h     026bh    0009h      CODE               _setLockState (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     026ch     0276h    000bh      CODE               _intiKeyBoard (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     0277h     0284h    000eh      CODE               _CROM2PROM (CROM2PROM)
+     00h     0285h     02a5h    0021h      CODE               _LcdWriteMany (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     02a6h     02c3h    001eh      CODE               _strlen (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\v3_lmrmc.lib)
+     00h     02c4h     02efh    002ch      CODE               _LcdWriteString (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     02f0h     0301h    0012h      CODE               _whenLockStateTrue (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     0302h     0342h    0041h      CODE               _inputKeyBoardFull (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     0343h     0368h    0026h      CODE               _putValtoBuffer (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     0369h     037eh    0016h      CODE               _LcdClearLINE1 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     037fh     039eh    0020h      CODE               _readEEPROM (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     039fh     03beh    0020h      CODE               _writeEEPROM (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     03bfh     03edh    002fh      CODE               _setEEPROM (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     03eeh     0415h    0028h      CODE               _clipEEPROMBuffer (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     0416h     0476h    0061h      CODE               _builtin_holtek_divmodsi4_isr00 (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0477h     0525h    00afh      CODE               _convInt32ToText (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     0526h     054fh    002ah      CODE               _LcdWriteIntToChar (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     0550h     058ah    003bh      CODE               _putValtoEEPROMBuffer (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     058bh     05e8h    005eh      CODE               _getEEPROM (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     05e9h     060ah    0022h      CODE               _ScanKey (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     060bh     0634h    002ah      CODE               _changePassword (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     0635h     063bh    0007h      CODE               _getLockState (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     063ch     071dh    00e2h      CODE               _getKeyBoard (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     071eh     0de5h    06c8h      CODE               _chaosMath (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     0de6h     0e63h    007eh      CODE               _intiChaos (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     0e64h     0f0dh    00aah      CODE               _doMath (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     0f0eh     10a6h    0199h      CODE               _getFormatKey (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     10a7h     10afh    0009h      CODE               _setBuzzerState (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     10b0h     10b6h    0007h      CODE               _getBuzzerState (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     10b7h     10bdh    0007h      CODE               _getBluetoothState (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     10beh     10dah    001dh      CODE               _LcdClear (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     10dbh     1122h    0048h      CODE               _LcdInit (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     1123h     11f4h    00d2h      CODE               _main (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     11f5h     15d0h    03dch      CODE               _tryExecuteChaos (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     15d1h     1764h    0194h      CODE               _chaosPartOfMasterX1n (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     1765h     19b9h    0255h      CODE               _chaosPartOfMasterU1 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     19bah     1d81h    03c8h      CODE               _tryLikeConnectChaos (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     1d82h     1da5h    0024h      CODE               _LcdWriteChar (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     1da6h     1dd2h    002dh      CODE               _UARTTxData (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     1dd3h     1dd9h    0007h      CODE               _getOpenIRState (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     1ddah     1df0h    0017h      CODE               _tryGetIeee754 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     1df1h     1e0ch    001ch      CODE               @ROMDATA_BASE (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\STARTUP1_L.OBJ)
+     01h     0000h     075eh    075fh      CODE               _tryExecuteChaosAllInOne (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     0080h     0080h    0001h      DATA     161       @data_ra (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0081h     0081h    0001h      DATA     154       @data_rb (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0082h     0082h    0001h      DATA     116       @data_rc (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0083h     0083h    0001h      DATA     255       @data_rd (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     0084h     0084h    0001h      DATA     245       @data_re (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
      00h     0085h     0085h    0001h      DATA     236       @data_rf (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
      00h     0086h     0086h    0001h      DATA     243       @data_rg (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
      00h     0087h     0087h    0001h      DATA     15        @data_rh (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
      00h     0088h     008dh    0006h      DATA     213.33    ftdata1 (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
      00h     008eh     0094h    0007h      DATA     91.571    ftdata2 (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
      00h     0095h     0097h    0003h      DATA     209.67    dtdata (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     0098h     0098h    0001h      DATA     9         @data_ra08 (isr:ra~rh)
-     00h     0099h     0099h    0001h      DATA     2         @data_r104 (isr:ra~rh)
-     00h     009ah     009ah    0001h      DATA     2         @data_r204 (isr:ra~rh)
-     00h     009bh     009bh    0001h      DATA     3         @data_rb04 (isr:ra~rh)
-     00h     009ch     009ch    0001h      DATA     4         @data_ra04 (isr:ra~rh)
-     00h     009dh     009dh    0001h      DATA     2         @data_r108 (isr:ra~rh)
-     00h     009eh     009eh    0001h      DATA     2         @data_r208 (isr:ra~rh)
-     00h     00dfh     00e0h    0002h      DATA     17        @HCCINIT_keyBoardBufferPtr (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00e1h     00e2h    0002h      DATA     14        @HCCINIT_switchCaseNum (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00e3h     00e4h    0002h      DATA     2         @HCCINIT_tryDoOnce (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00e5h     00ech    0008h      DATA     1         @HCCINIT_inputKeyBoardBuffer (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00edh     00f4h    0008h      DATA     0         @HCCINIT_keyBoardBuffer (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00f5h     00f8h    0004h      DATA     23        @HCCINIT0_y2 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00f9h     00fch    0004h      DATA     19        @HCCINIT0_ax1 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00fdh     00fdh    0001h      DATA     14        @HCCINIT0_key (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00feh     00feh    0001h      DATA     4         @HCCINIT0_b_RX (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00ffh     00ffh    0001h      DATA     4         @HCCINIT0_getUmState (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     01h     0080h     0083h    0004h      DATA     15        @HCCINIT0_ax2 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     01h     0084h     0087h    0004h      DATA     13        @HCCINIT0_x2 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     01h     0088h     008bh    0004h      DATA     13        @HCCINIT0_y1 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     01h     008ch     008fh    0004h      DATA     13        @HCCINIT0_dx2 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     01h     0090h     0093h    0004h      DATA     12        @HCCINIT0_A (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     01h     0094h     0097h    0004h      DATA     12        @HCCINIT0_valBuffer (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     01h     0098h     009bh    0004h      DATA     11        @HCCINIT0_y3 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     01h     009ch     009fh    0004h      DATA     11        @HCCINIT0_ax3 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     01h     00a0h     00a3h    0004h      DATA     9         @HCCINIT0_c2 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     01h     00a4h     00a7h    0004h      DATA     9         @HCCINIT0_c1 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     01h     00a8h     00abh    0004h      DATA     7         @HCCINIT0_x3 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     01h     00ach     00afh    0004h      DATA     7         @HCCINIT0_x1 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     01h     00b0h     00b3h    0004h      DATA     7         @HCCINIT0_dx3 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     01h     00b4h     00b7h    0004h      DATA     7         @HCCINIT0_dx1 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     01h     00b8h     00bbh    0004h      DATA     7         @HCCINIT0_j1 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     01h     00bch     00bfh    0004h      DATA     7         @HCCINIT0_h1 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     01h     00c0h     00c3h    0004h      DATA     7         @HCCINIT0_g1 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     01h     00c4h     00c7h    0004h      DATA     6         @HCCINIT0_g3 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     01h     00c8h     00cbh    0004h      DATA     6         @HCCINIT0_g2 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     01h     00cch     00cfh    0004h      DATA     5         @HCCINIT0_j2 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     01h     00d0h     00d3h    0004h      DATA     5         @HCCINIT0_h2 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     01h     00d4h     00d7h    0004h      DATA     5         @HCCINIT0_g4 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     01h     00d8h     00dbh    0004h      DATA     4         @HCCINIT0_y1n (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     01h     00dch     00dfh    0004h      DATA     4         @HCCINIT0_valX1n (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     01h     00e0h     00e3h    0004h      DATA     4         @HCCINIT0_valUm (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     01h     00e4h     00e4h    0001h      DATA     3         @HCCINIT0_RxData (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     01h     00e5h     00e8h    0004h      DATA     3         @HCCINIT0_y3n (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     01h     00e9h     00ech    0004h      DATA     3         @HCCINIT0_y2n (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     01h     00edh     00f0h    0004h      DATA     3         @HCCINIT0_u2 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     01h     00f1h     00f1h    0001h      DATA     3         @HCCINIT0_readTimeVal (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     01h     00f2h     00f5h    0004h      DATA     2         @HCCINIT0_u1 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     01h     00f6h     00f9h    0004h      DATA     2         @HCCINIT0_x3n (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     01h     00fah     00fdh    0004h      DATA     2         @HCCINIT0_x2n (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     0098h     0098h    0001h      DATA     2         @data_r104 (isr:ra~rh)
+     00h     0099h     0099h    0001h      DATA     2         @data_r204 (isr:ra~rh)
+     00h     009ah     009ah    0001h      DATA     3         @data_rb04 (isr:ra~rh)
+     00h     009bh     009bh    0001h      DATA     4         @data_ra04 (isr:ra~rh)
+     00h     00d4h     00d5h    0002h      DATA     15        @HCCINIT_keyBoardBufferPtr (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     00d6h     00d7h    0002h      DATA     14        @HCCINIT_switchCaseNum (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     00d8h     00d9h    0002h      DATA     2         @HCCINIT_tryDoOnce (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     00dah     00e1h    0008h      DATA     1         @HCCINIT_inputKeyBoardBuffer (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     00e2h     00e9h    0008h      DATA     0         @HCCINIT_readEEPROMBuffer (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     00eah     00f1h    0008h      DATA     0         @HCCINIT_nullBuffer (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     00f2h     00f9h    0008h      DATA     0         @HCCINIT_EEPROMBuffer (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     00fah     00fdh    0004h      DATA     23        @HCCINIT0_y2 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     00feh     00feh    0001h      DATA     14        @HCCINIT0_key (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     00ffh     00ffh    0001h      DATA     6         @HCCINIT0_readTimeVal (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     01h     0080h     0087h    0008h      DATA     0         @HCCINIT_keyBoardBuffer (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     01h     0088h     008bh    0004h      DATA     19        @HCCINIT0_ax1 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     01h     008ch     008fh    0004h      DATA     15        @HCCINIT0_ax2 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     01h     0090h     0093h    0004h      DATA     13        @HCCINIT0_x2 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     01h     0094h     0097h    0004h      DATA     13        @HCCINIT0_y1 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     01h     0098h     009bh    0004h      DATA     13        @HCCINIT0_dx2 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     01h     009ch     009fh    0004h      DATA     12        @HCCINIT0_A (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     01h     00a0h     00a3h    0004h      DATA     12        @HCCINIT0_valBuffer (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     01h     00a4h     00a7h    0004h      DATA     11        @HCCINIT0_y3 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     01h     00a8h     00abh    0004h      DATA     11        @HCCINIT0_ax3 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     01h     00ach     00afh    0004h      DATA     9         @HCCINIT0_c2 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     01h     00b0h     00b3h    0004h      DATA     9         @HCCINIT0_c1 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     01h     00b4h     00b7h    0004h      DATA     7         @HCCINIT0_x3 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     01h     00b8h     00bbh    0004h      DATA     7         @HCCINIT0_x1 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     01h     00bch     00bfh    0004h      DATA     7         @HCCINIT0_dx3 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     01h     00c0h     00c3h    0004h      DATA     7         @HCCINIT0_dx1 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     01h     00c4h     00c7h    0004h      DATA     7         @HCCINIT0_j1 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     01h     00c8h     00cbh    0004h      DATA     7         @HCCINIT0_h1 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     01h     00cch     00cfh    0004h      DATA     7         @HCCINIT0_g1 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     01h     00d0h     00d1h    0002h      DATA     7         @HCCINIT0_where (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     01h     00d2h     00d5h    0004h      DATA     6         @HCCINIT0_g3 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     01h     00d6h     00d9h    0004h      DATA     6         @HCCINIT0_g2 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     01h     00dah     00ddh    0004h      DATA     5         @HCCINIT0_j2 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     01h     00deh     00e1h    0004h      DATA     5         @HCCINIT0_h2 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     01h     00e2h     00e5h    0004h      DATA     5         @HCCINIT0_g4 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     01h     00e6h     00e6h    0001h      DATA     4         @HCCINIT0_b_RX (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     01h     00e7h     00eah    0004h      DATA     4         @HCCINIT0_y1n (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     01h     00ebh     00eeh    0004h      DATA     4         @HCCINIT0_valX1n (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     01h     00efh     00f2h    0004h      DATA     4         @HCCINIT0_valUm (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     01h     00f3h     00f3h    0001h      DATA     4         @HCCINIT0_getUmState (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     01h     00f4h     00f4h    0001h      DATA     3         @HCCINIT0_RxData (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     01h     00f5h     00f8h    0004h      DATA     3         @HCCINIT0_y3n (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     01h     00f9h     00fch    0004h      DATA     3         @HCCINIT0_y2n (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     01h     00fdh     00fdh    0001h      DATA     3         @HCCINIT0_fullPassword (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
      01h     00feh     00ffh    0002h      DATA     1         @HCCINIT0_valPtr (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     02h     0080h     0083h    0004h      DATA     2         @HCCINIT0_x1n (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     02h     0084h     0087h    0004h      DATA     2         @HCCINIT0_IntX1 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     02h     0088h     008bh    0004h      DATA     2         @HCCINIT0_IntY1 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     02h     008ch     008dh    0002h      DATA     1         @HCCINIT0_ptr (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     02h     008eh     0091h    0004h      DATA     1         @HCCINIT0_IEEE754Val (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     02h     0092h     009dh    000ch      DATA     0         @HCCINIT0___pValueToTextBuffer_2759 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     02h     009eh     00a1h    0004h      DATA     0         @HCCINIT0_Dval (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     02h     00a2h     00a2h    0001h      DATA     0         @HCCINIT0_keyBoard (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     02h     00a3h     00a3h    0001h      DATA     2         @data_r304 (isr:ra~rh)
-     02h     00a4h     00a4h    0001h      DATA     2         @data_r308 (isr:ra~rh)
-     02h     00a5h     00a5h    0001h      DATA     2         @data_r408 (isr:ra~rh)
-     02h     00a6h     00a6h    0001h      DATA     2         @data_r508 (isr:ra~rh)
-     02h     00a7h     00a7h    0001h      DATA     2         @data_r608 (isr:ra~rh)
-     02h     00a8h     00a8h    0001h      DATA     2         @data_r708 (isr:ra~rh)
+     02h     0080h     0083h    0004h      DATA     3         @HCCINIT0_u2 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     02h     0084h     0087h    0004h      DATA     2         @HCCINIT0_u1 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     02h     0088h     008bh    0004h      DATA     2         @HCCINIT0_x3n (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     02h     008ch     008fh    0004h      DATA     2         @HCCINIT0_x2n (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     02h     0090h     0093h    0004h      DATA     2         @HCCINIT0_x1n (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     02h     0094h     0097h    0004h      DATA     2         @HCCINIT0_IntX1 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     02h     0098h     009bh    0004h      DATA     2         @HCCINIT0_IntY1 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     02h     009ch     009dh    0002h      DATA     1         @HCCINIT0_ptr (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     02h     009eh     00a1h    0004h      DATA     1         @HCCINIT0_IEEE754Val (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     02h     00a2h     00adh    000ch      DATA     0         @HCCINIT0___pValueToTextBuffer_2759 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     02h     00aeh     00b1h    0004h      DATA     0         @HCCINIT0_Dval (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     02h     00b2h     00b3h    0002h      DATA     0         @HCCINIT0_newInt (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     02h     00b4h     00b4h    0001h      DATA     0         @HCCINIT0_keyBoard (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     02h     00b5h     00b5h    0001h      DATA     2         @data_r304 (isr:ra~rh)
 
      Local Sections
 
      Bank    Start     End      Length     Class    AvgIns    Name
-     00h     00a7h     00a9h    0003h      LOCAL    1.6667    _LcdClearLINE1 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00a2h     00a3h    0002h      LOCAL    17.5      _LcdControl (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00a0h     00a1h    0002h      LOCAL    19        _delay (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     009fh     009fh    0001h      LOCAL    2         _builtin_holtek_delay_isr00 (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     00a2h     00a3h    0002h      LOCAL    7.5       _LcdWrite (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00a7h     00abh    0005h      LOCAL    1.4       _LcdWriteChar (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00bfh     00c4h    0006h      LOCAL    1.6667    _LcdWriteIntToChar (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00b5h     00beh    000ah      LOCAL    2.2       _convInt32ToText (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00a7h     00b4h    000eh      LOCAL    7.0714    _builtin_holtek_divmodsi4_isr00 (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     00a7h     00a7h    0000h      LOCAL    0         _Crom2Prom (CROM2PROM)
-     00h     00afh     00b4h    0006h      LOCAL    17.667    _LcdWriteString (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00a7h     00a8h    0002h      LOCAL    3         _strlen (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\v3_lmrmc.lib)
-     00h     00a7h     00aeh    0008h      LOCAL    2.75      _LcdWriteMany (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00a7h     00a7h    0000h      LOCAL    0         @dummy4 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00a7h     00a7h    0000h      LOCAL    0         _ISR_ExtINT0 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00a7h     00a7h    0000h      LOCAL    0         @dummy8 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00a7h     00a7h    0000h      LOCAL    0         _ISR_ExtINT1 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     009fh     009fh    0000h      LOCAL    0         _getOpenIRState (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     009fh     009fh    0000h      LOCAL    0         _getLockState (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     009fh     009fh    0001h      LOCAL    2         _setBuzzerState (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00a4h     00a6h    0003h      LOCAL    4.3333    _LcdClearLINE2 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     009fh     009fh    0001h      LOCAL    2         _setLockState (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00a7h     00d2h    002ch      LOCAL    9         _tryExecuteChaosAllInOne (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00a7h     00a7h    0000h      LOCAL    0         _builtin_holtek_dtsubadd (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     00a7h     00a7h    0000h      LOCAL    0         _builtin_holtek_dtdecode (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     00a7h     00a7h    0000h      LOCAL    0         _builtin_holtek_dtmul (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     00c7h     00dah    0014h      LOCAL    1.2       _tryLikeConnectChaos (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00a7h     00a7h    0000h      LOCAL    0         _builtin_holtek_dtdiv (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     00a7h     00aeh    0008h      LOCAL    9         _chaosPartOfMasterU1 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00a7h     00aah    0004h      LOCAL    7         _chaosPartOfMasterX1n (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00a7h     00c6h    0020h      LOCAL    4.875     _tryExecuteChaos (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00dfh     00dfh    0000h      LOCAL    0         @dummy (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00dfh     00dfh    0000h      LOCAL    0         _main (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00a8h     00a8h    0000h      LOCAL    0         _LcdInit (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00a7h     00a7h    0001h      LOCAL    6         _LcdClear (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00a7h     00a7h    0000h      LOCAL    0         _getBluetoothState (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00a7h     00aah    0004h      LOCAL    2         _getFormatKey (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00d7h     00deh    0008h      LOCAL    2         _doMath (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00a7h     00a7h    0000h      LOCAL    0         _intiChaos (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00a7h     00d6h    0030h      LOCAL    6.1458    _chaosMath (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00a7h     00a7h    0000h      LOCAL    0         _builtin_holtek_dtol (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     00a7h     00a7h    0000h      LOCAL    0         _ScanKey (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00bah     00bah    0001h      LOCAL    10        _getKeyBoard (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00b8h     00b9h    0002h      LOCAL    11        _putValtoBuffer (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00b5h     00b7h    0003h      LOCAL    5         _inputKeyBoardFull (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00a7h     00a7h    0000h      LOCAL    0         _intiKeyBoard (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00a7h     00a7h    0000h      LOCAL    0         _clipValtoBuffer (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     00a1h     00a5h    0005h      LOCAL    1.4       _LcdWriteChar (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     009fh     00a0h    0002h      LOCAL    17.5      _LcdControl (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     009dh     009eh    0002h      LOCAL    21        _delay (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     009ch     009ch    0001h      LOCAL    2         _builtin_holtek_delay_isr00 (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     009fh     00a0h    0002h      LOCAL    7.5       _LcdWrite (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     009ch     009ch    0000h      LOCAL    0         @dummy4 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     009ch     009ch    0000h      LOCAL    0         _ISR_ExtINT0 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     009fh     00cah    002ch      LOCAL    9         _tryExecuteChaosAllInOne (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     009ch     009ch    0000h      LOCAL    0         _builtin_holtek_dtsubadd (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     009ch     009ch    0000h      LOCAL    0         _builtin_holtek_dtdecode (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     009ch     009ch    0000h      LOCAL    0         _builtin_holtek_dtmul (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     00bfh     00d2h    0014h      LOCAL    1.2       _tryLikeConnectChaos (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     009ch     009ch    0000h      LOCAL    0         _builtin_holtek_dtdiv (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     009ch     00a3h    0008h      LOCAL    9         _chaosPartOfMasterU1 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     009ch     009fh    0004h      LOCAL    7         _chaosPartOfMasterX1n (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     009fh     00beh    0020h      LOCAL    4.875     _tryExecuteChaos (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     00d4h     00d4h    0000h      LOCAL    0         @dummy (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     00d4h     00d4h    0000h      LOCAL    0         _main (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     00a2h     00a2h    0000h      LOCAL    0         _LcdInit (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     00a1h     00a1h    0001h      LOCAL    6         _LcdClear (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     00a9h     00aeh    0006h      LOCAL    18.667    _LcdWriteString (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     009ch     009dh    0002h      LOCAL    3         _strlen (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\v3_lmrmc.lib)
+     00h     009ch     009ch    0000h      LOCAL    0         _Crom2Prom (CROM2PROM)
+     00h     00a1h     00a8h    0008h      LOCAL    2.75      _LcdWriteMany (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     009ch     009ch    0000h      LOCAL    0         _getBluetoothState (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     009ch     009ch    0000h      LOCAL    0         _getLockState (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     009ch     009ch    0001h      LOCAL    2         _setLockState (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     009ch     009ch    0000h      LOCAL    0         _getBuzzerState (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     009ch     009ch    0001h      LOCAL    2         _setBuzzerState (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     009ch     009fh    0004h      LOCAL    2         _getFormatKey (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     00cch     00d3h    0008h      LOCAL    2         _doMath (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     009ch     009ch    0000h      LOCAL    0         _intiChaos (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     009ch     00cbh    0030h      LOCAL    6.1458    _chaosMath (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     009ch     009ch    0000h      LOCAL    0         _builtin_holtek_dtol (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     00afh     00afh    0000h      LOCAL    0         _whenLockStateTrue (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     009ch     009ch    0000h      LOCAL    0         _intiKeyBoard (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     009ch     009ch    0001h      LOCAL    2         _setDFalseLightState (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     009ch     009ch    0001h      LOCAL    2         _setDTrueLightState (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     009ch     009ch    0000h      LOCAL    0         _ScanKey (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     00bdh     00bdh    0001h      LOCAL    8         _getKeyBoard (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     00a1h     00a3h    0003h      LOCAL    5.6667    _LcdClearLINE2 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     00bdh     00bdh    0000h      LOCAL    0         _changePassword (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     00bch     00bch    0001h      LOCAL    0         _getEEPROM (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     00bah     00bbh    0002h      LOCAL    12        _putValtoEEPROMBuffer (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     00b4h     00b9h    0006h      LOCAL    2.6667    _LcdWriteIntToChar (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     00aah     00b3h    000ah      LOCAL    2.2       _convInt32ToText (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     009ch     00a9h    000eh      LOCAL    7.0714    _builtin_holtek_divmodsi4_isr00 (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     00a4h     00a4h    0000h      LOCAL    0         _clipEEPROMBuffer (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     00afh     00afh    0000h      LOCAL    0         _setEEPROM (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     009ch     009dh    0002h      LOCAL    2         _writeEEPROM (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     009ch     009dh    0002h      LOCAL    2         _readEEPROM (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     00a1h     00a3h    0003h      LOCAL    2.3333    _LcdClearLINE1 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     00b2h     00b3h    0002h      LOCAL    11        _putValtoBuffer (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     00afh     00b1h    0003h      LOCAL    5         _inputKeyBoardFull (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     00a4h     00a4h    0000h      LOCAL    0         _clipValtoBuffer (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
 
      Indepentent Local Sections
 
      Bank    Start     End      Length     Class    AvgIns    Name
-     00h     00a7h     00a7h    0001h      ILOCAL   2         _UARTTxData (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00a7h     00a7h    0000h      ILOCAL   0         _getBuzzerState (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00a7h     00a7h    0000h      ILOCAL   0         _changePassword (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00a7h     00a7h    0000h      ILOCAL   0         _tryGetIeee754 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
-     00h     00a7h     00a7h    0000h      ILOCAL   0         _builtin_holtek_dtnorm (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
-     00h     00a7h     00a7h    0000h      ILOCAL   0         _builtin_holtek_dtinf (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     009ch     009ch    0001h      ILOCAL   2         _UARTTxData (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     009ch     009ch    0000h      ILOCAL   0         _getOpenIRState (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     009ch     009ch    0000h      ILOCAL   0         _tryGetIeee754 (C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ)
+     00h     009ch     009ch    0000h      ILOCAL   0         _builtin_holtek_dtnorm (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
+     00h     009ch     009ch    0000h      ILOCAL   0         _builtin_holtek_dtinf (C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\LIBHOLTEKGCC.LIB)
 
      Public Symbols Information
      Address            Public by Name
-     0190h              _A
-     02a9h              _Crom2Prom
-     02a9h              _Crom2PromNext
-     029eh              _Dval
-     028eh              _IEEE754Val
-     000ch              _ISR_ExtINT0
-     003eh              _ISR_ExtINT1
-     0284h              _IntX1
-     0288h              _IntY1
-     0e24h              _LcdClear
-     0079h              _LcdClearLINE1
-     0264h              _LcdClearLINE2
-     00a4h              _LcdClearLINE2_2
-     0e41h              _LcdInit
-     1bf6h              _LcdWriteChar
-     1bcch              _LcdWriteIntToChar
-     00bfh              _LcdWriteIntToChar_2
-     02f6h              _LcdWriteString
-     00afh              _LcdWriteString_2
-     01e4h              _RxData
-     039ch              _ScanKey
-     1c1ah              _UARTTxData
-     0225h              __DELAYY0_isr00
-     0225h              __DELAYY1_isr00
-     0224h              __DELAYY2_isr00
-     0224h              __DELAYY3_isr00
-     0223h              __DELAYY4_isr00
-     0223h              __DELAYY5_isr00
-     00f9h              _ax1
-     0180h              _ax2
-     019ch              _ax3
-     00feh              _b_RX
-     1abch              _builtin_holtek_divmodsi4_isr00
-     0168h              _builtin_holtek_dtadd
-     00ddh              _builtin_holtek_dtdecode1
-     00d2h              _builtin_holtek_dtdecode2
-     012ah              _builtin_holtek_dtdiv
-     0203h              _builtin_holtek_dtinf
-     00eah              _builtin_holtek_dtmul
-     01cfh              _builtin_holtek_dtnorm
-     01a4h              _builtin_holtek_dtol
-     0166h              _builtin_holtek_dtsub
-     00e5h              _builtin_holtek_dtzero
-     00e8h              _builtin_holtek_dtzero1
+     019ch              _A
+     0277h              _Crom2Prom
+     0277h              _Crom2PromNext
+     02aeh              _Dval
+     00f2h              _EEPROMBuffer
+     029eh              _IEEE754Val
+     0008h              _ISR_ExtINT0
+     0294h              _IntX1
+     0298h              _IntY1
+     10beh              _LcdClear
+     0369h              _LcdClearLINE1
+     0213h              _LcdClearLINE2
+     10dbh              _LcdInit
+     1d82h              _LcdWriteChar
+     0526h              _LcdWriteIntToChar
+     00b4h              _LcdWriteIntToChar_2
+     02c4h              _LcdWriteString
+     00a9h              _LcdWriteString_2
+     01f4h              _RxData
+     05e9h              _ScanKey
+     1da6h              _UARTTxData
+     01d4h              __DELAYY0_isr00
+     01d4h              __DELAYY1_isr00
+     01d3h              __DELAYY2_isr00
+     01d3h              __DELAYY3_isr00
+     01d2h              __DELAYY4_isr00
+     01d2h              __DELAYY5_isr00
+     0188h              _ax1
+     018ch              _ax2
+     01a8h              _ax3
+     01e6h              _b_RX
+     0416h              _builtin_holtek_divmodsi4_isr00
+     010eh              _builtin_holtek_dtadd
+     0083h              _builtin_holtek_dtdecode1
+     0078h              _builtin_holtek_dtdecode2
+     00d0h              _builtin_holtek_dtdiv
+     01a9h              _builtin_holtek_dtinf
+     0090h              _builtin_holtek_dtmul
+     0175h              _builtin_holtek_dtnorm
+     014ah              _builtin_holtek_dtol
+     010ch              _builtin_holtek_dtsub
+     008bh              _builtin_holtek_dtzero
+     008eh              _builtin_holtek_dtzero1
      008bh              _builtin_holtek_exp1
      0091h              _builtin_holtek_exp2
      008dh              _builtin_holtek_floatflag
@@ -256,109 +267,116 @@ Input Library File: C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x
      008eh              _builtin_holtek_mant2
      0092h              _builtin_holtek_prod
      008ch              _builtin_holtek_signs
-     1acbh              _builtin_holtek_udivmodsi4_isr00
-     01a4h              _c1
-     01a0h              _c2
-     0002h              _changePassword
-     04bbh              _chaosMath
-     00c5h              _chaosMath_2
-     14c3h              _chaosPartOfMasterU1
-     132fh              _chaosPartOfMasterX1n
-     027ch              _clipValtoBuffer
-     1b1dh              _convInt32ToText
-     00b5h              _convInt32ToText_2
-     0231h              _delay
-     00a0h              _delay_2
-     0bddh              _doMath
-     00d7h              _doMath_2
-     01b4h              _dx1
-     018ch              _dx2
-     01b0h              _dx3
-     01c0h              _g1
-     01c8h              _g2
-     01c4h              _g3
-     01d4h              _g4
-     0e1dh              _getBluetoothState
-     1c47h              _getBuzzerState
-     0c87h              _getFormatKey
-     03c5h              _getKeyBoard
-     03beh              _getLockState
-     0f4ch              _getOpenIRState
-     00ffh              _getUmState
-     01bch              _h1
-     01d0h              _h2
-     00e5h              _inputKeyBoardBuffer
-     032dh              _inputKeyBoardFull
-     0b63h              _intiChaos
-     0322h              _intiKeyBoard
-     01b8h              _j1
-     01cch              _j2
-     00fdh              _key
-     02a2h              _keyBoard
-     00edh              _keyBoardBuffer
-     00dfh              _keyBoardBufferPtr
-     0e89h              _main
-     028ch              _ptr
-     0376h              _putValtoBuffer
-     01f1h              _readTimeVal
-     0f43h              _setBuzzerState
-     02a0h              _setLockState
-     02d8h              _strlen
-     00e1h              _switchCaseNum
-     00e3h              _tryDoOnce
-     0f53h              _tryExecuteChaos
+     0425h              _builtin_holtek_udivmodsi4_isr00
+     01b0h              _c1
+     01ach              _c2
+     060bh              _changePassword
+     071eh              _chaosMath
+     00beh              _chaosMath_2
+     1765h              _chaosPartOfMasterU1
+     15d1h              _chaosPartOfMasterX1n
+     03eeh              _clipEEPROMBuffer
+     022bh              _clipValtoBuffer
+     0477h              _convInt32ToText
+     00afh              _convInt32ToText_2
+     01e0h              _delay
+     009dh              _delay_2
+     0e64h              _doMath
+     00cch              _doMath_2
+     01c0h              _dx1
+     0198h              _dx2
+     01bch              _dx3
+     01fdh              _fullPassword
+     01cch              _g1
+     01d6h              _g2
+     01d2h              _g3
+     01e2h              _g4
+     10b7h              _getBluetoothState
+     10b0h              _getBuzzerState
+     058bh              _getEEPROM
+     0f0eh              _getFormatKey
+     063ch              _getKeyBoard
+     0635h              _getLockState
+     1dd3h              _getOpenIRState
+     01f3h              _getUmState
+     01c8h              _h1
+     01deh              _h2
+     00dah              _inputKeyBoardBuffer
+     0302h              _inputKeyBoardFull
+     0de6h              _intiChaos
+     026ch              _intiKeyBoard
+     01c4h              _j1
+     01dah              _j2
+     00feh              _key
+     02b4h              _keyBoard
+     0180h              _keyBoardBuffer
+     00d4h              _keyBoardBufferPtr
+     1123h              _main
+     02b2h              _newInt
+     00eah              _nullBuffer
+     029ch              _ptr
+     0343h              _putValtoBuffer
+     0550h              _putValtoEEPROMBuffer
+     00bah              _putValtoEEPROMBuffer_2
+     037fh              _readEEPROM
+     00e2h              _readEEPROMBuffer
+     009ch              _readEEPROM_2
+     00ffh              _readTimeVal
+     10a7h              _setBuzzerState
+     0259h              _setDFalseLightState
+     024fh              _setDTrueLightState
+     03bfh              _setEEPROM
+     0263h              _setLockState
+     02a6h              _strlen
+     00d6h              _switchCaseNum
+     00d8h              _tryDoOnce
+     11f5h              _tryExecuteChaos
      2000h              _tryExecuteChaosAllInOne
-     1c4eh              _tryGetIeee754
-     1718h              _tryLikeConnectChaos
-     01f2h              _u1
-     01edh              _u2
-     0194h              _valBuffer
+     1ddah              _tryGetIeee754
+     19bah              _tryLikeConnectChaos
+     0284h              _u1
+     0280h              _u2
+     01a0h              _valBuffer
      01feh              _valPtr
-     01e0h              _valUm
-     01dch              _valX1n
-     01ach              _x1
-     0280h              _x1n
-     0184h              _x2
-     01fah              _x2n
-     01a8h              _x3
-     01f6h              _x3n
-     0188h              _y1
-     01d8h              _y1n
-     00f5h              _y2
-     01e9h              _y2n
-     0198h              _y3
-     01e5h              _y3n
-     0099h              r104
-     009dh              r108
-     009ah              r204
-     009eh              r208
-     02a3h              r304
-     02a4h              r308
-     02a5h              r408
-     02a6h              r508
-     02a7h              r608
-     02a8h              r708
+     01efh              _valUm
+     01ebh              _valX1n
+     02f0h              _whenLockStateTrue
+     01d0h              _where
+     039fh              _writeEEPROM
+     01b8h              _x1
+     0290h              _x1n
+     0190h              _x2
+     028ch              _x2n
+     01b4h              _x3
+     0288h              _x3n
+     0194h              _y1
+     01e7h              _y1n
+     00fah              _y2
+     01f9h              _y2n
+     01a4h              _y3
+     01f5h              _y3n
+     0098h              r104
+     0099h              r204
+     02b5h              r304
      0080h              ra
-     009ch              ra04
-     0098h              ra08
+     009bh              ra04
      0081h              rb
-     009bh              rb04
+     009ah              rb04
      0082h              rc
      0083h              rd
      0084h              re
      0085h              rf
      0086h              rg
      0087h              rh
-     1c65h              startup_value_1
+     1df1h              startup_value_1
 
      Address            Public by Value
-     0002h              _changePassword
-     000ch              _ISR_ExtINT0
-     003eh              _ISR_ExtINT1
-     0079h              _LcdClearLINE1
+     0008h              _ISR_ExtINT0
+     0078h              _builtin_holtek_dtdecode2
      0080h              ra
      0081h              rb
      0082h              rc
+     0083h              _builtin_holtek_dtdecode1
      0083h              rd
      0084h              re
      0085h              rf
@@ -366,159 +384,161 @@ Input Library File: C:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x
      0087h              rh
      0088h              _builtin_holtek_mant1
      008bh              _builtin_holtek_exp1
+     008bh              _builtin_holtek_dtzero
      008ch              _builtin_holtek_signs
      008dh              _builtin_holtek_floatflag
      008eh              _builtin_holtek_mant2
+     008eh              _builtin_holtek_dtzero1
+     0090h              _builtin_holtek_dtmul
      0091h              _builtin_holtek_exp2
      0092h              _builtin_holtek_prod
      0095h              _builtin_holtek_mant12p
-     0098h              ra08
-     0099h              r104
-     009ah              r204
-     009bh              rb04
-     009ch              ra04
-     009dh              r108
-     009eh              r208
-     00a0h              _delay_2
-     00a4h              _LcdClearLINE2_2
-     00afh              _LcdWriteString_2
-     00b5h              _convInt32ToText_2
-     00bfh              _LcdWriteIntToChar_2
-     00c5h              _chaosMath_2
-     00d2h              _builtin_holtek_dtdecode2
-     00d7h              _doMath_2
-     00ddh              _builtin_holtek_dtdecode1
-     00dfh              _keyBoardBufferPtr
-     00e1h              _switchCaseNum
-     00e3h              _tryDoOnce
-     00e5h              _builtin_holtek_dtzero
-     00e5h              _inputKeyBoardBuffer
-     00e8h              _builtin_holtek_dtzero1
-     00eah              _builtin_holtek_dtmul
-     00edh              _keyBoardBuffer
-     00f5h              _y2
-     00f9h              _ax1
-     00fdh              _key
-     00feh              _b_RX
-     00ffh              _getUmState
-     012ah              _builtin_holtek_dtdiv
-     0166h              _builtin_holtek_dtsub
-     0168h              _builtin_holtek_dtadd
-     0180h              _ax2
-     0184h              _x2
-     0188h              _y1
-     018ch              _dx2
-     0190h              _A
-     0194h              _valBuffer
-     0198h              _y3
-     019ch              _ax3
-     01a0h              _c2
-     01a4h              _builtin_holtek_dtol
-     01a4h              _c1
-     01a8h              _x3
-     01ach              _x1
-     01b0h              _dx3
-     01b4h              _dx1
-     01b8h              _j1
-     01bch              _h1
-     01c0h              _g1
-     01c4h              _g3
-     01c8h              _g2
-     01cch              _j2
-     01cfh              _builtin_holtek_dtnorm
-     01d0h              _h2
-     01d4h              _g4
-     01d8h              _y1n
-     01dch              _valX1n
-     01e0h              _valUm
-     01e4h              _RxData
-     01e5h              _y3n
-     01e9h              _y2n
-     01edh              _u2
-     01f1h              _readTimeVal
-     01f2h              _u1
-     01f6h              _x3n
-     01fah              _x2n
+     0098h              r104
+     0099h              r204
+     009ah              rb04
+     009bh              ra04
+     009ch              _readEEPROM_2
+     009dh              _delay_2
+     00a9h              _LcdWriteString_2
+     00afh              _convInt32ToText_2
+     00b4h              _LcdWriteIntToChar_2
+     00bah              _putValtoEEPROMBuffer_2
+     00beh              _chaosMath_2
+     00cch              _doMath_2
+     00d0h              _builtin_holtek_dtdiv
+     00d4h              _keyBoardBufferPtr
+     00d6h              _switchCaseNum
+     00d8h              _tryDoOnce
+     00dah              _inputKeyBoardBuffer
+     00e2h              _readEEPROMBuffer
+     00eah              _nullBuffer
+     00f2h              _EEPROMBuffer
+     00fah              _y2
+     00feh              _key
+     00ffh              _readTimeVal
+     010ch              _builtin_holtek_dtsub
+     010eh              _builtin_holtek_dtadd
+     014ah              _builtin_holtek_dtol
+     0175h              _builtin_holtek_dtnorm
+     0180h              _keyBoardBuffer
+     0188h              _ax1
+     018ch              _ax2
+     0190h              _x2
+     0194h              _y1
+     0198h              _dx2
+     019ch              _A
+     01a0h              _valBuffer
+     01a4h              _y3
+     01a8h              _ax3
+     01a9h              _builtin_holtek_dtinf
+     01ach              _c2
+     01b0h              _c1
+     01b4h              _x3
+     01b8h              _x1
+     01bch              _dx3
+     01c0h              _dx1
+     01c4h              _j1
+     01c8h              _h1
+     01cch              _g1
+     01d0h              _where
+     01d2h              __DELAYY4_isr00
+     01d2h              __DELAYY5_isr00
+     01d2h              _g3
+     01d3h              __DELAYY2_isr00
+     01d3h              __DELAYY3_isr00
+     01d4h              __DELAYY0_isr00
+     01d4h              __DELAYY1_isr00
+     01d6h              _g2
+     01dah              _j2
+     01deh              _h2
+     01e0h              _delay
+     01e2h              _g4
+     01e6h              _b_RX
+     01e7h              _y1n
+     01ebh              _valX1n
+     01efh              _valUm
+     01f3h              _getUmState
+     01f4h              _RxData
+     01f5h              _y3n
+     01f9h              _y2n
+     01fdh              _fullPassword
      01feh              _valPtr
-     0203h              _builtin_holtek_dtinf
-     0223h              __DELAYY5_isr00
-     0223h              __DELAYY4_isr00
-     0224h              __DELAYY3_isr00
-     0224h              __DELAYY2_isr00
-     0225h              __DELAYY1_isr00
-     0225h              __DELAYY0_isr00
-     0231h              _delay
-     0264h              _LcdClearLINE2
-     027ch              _clipValtoBuffer
-     0280h              _x1n
-     0284h              _IntX1
-     0288h              _IntY1
-     028ch              _ptr
-     028eh              _IEEE754Val
-     029eh              _Dval
-     02a0h              _setLockState
-     02a2h              _keyBoard
-     02a3h              r304
-     02a4h              r308
-     02a5h              r408
-     02a6h              r508
-     02a7h              r608
-     02a8h              r708
-     02a9h              _Crom2PromNext
-     02a9h              _Crom2Prom
-     02d8h              _strlen
-     02f6h              _LcdWriteString
-     0322h              _intiKeyBoard
-     032dh              _inputKeyBoardFull
-     0376h              _putValtoBuffer
-     039ch              _ScanKey
-     03beh              _getLockState
-     03c5h              _getKeyBoard
-     04bbh              _chaosMath
-     0b63h              _intiChaos
-     0bddh              _doMath
-     0c87h              _getFormatKey
-     0e1dh              _getBluetoothState
-     0e24h              _LcdClear
-     0e41h              _LcdInit
-     0e89h              _main
-     0f43h              _setBuzzerState
-     0f4ch              _getOpenIRState
-     0f53h              _tryExecuteChaos
-     132fh              _chaosPartOfMasterX1n
-     14c3h              _chaosPartOfMasterU1
-     1718h              _tryLikeConnectChaos
-     1abch              _builtin_holtek_divmodsi4_isr00
-     1acbh              _builtin_holtek_udivmodsi4_isr00
-     1b1dh              _convInt32ToText
-     1bcch              _LcdWriteIntToChar
-     1bf6h              _LcdWriteChar
-     1c1ah              _UARTTxData
-     1c47h              _getBuzzerState
-     1c4eh              _tryGetIeee754
-     1c65h              startup_value_1
+     0213h              _LcdClearLINE2
+     022bh              _clipValtoBuffer
+     024fh              _setDTrueLightState
+     0259h              _setDFalseLightState
+     0263h              _setLockState
+     026ch              _intiKeyBoard
+     0277h              _Crom2PromNext
+     0277h              _Crom2Prom
+     0280h              _u2
+     0284h              _u1
+     0288h              _x3n
+     028ch              _x2n
+     0290h              _x1n
+     0294h              _IntX1
+     0298h              _IntY1
+     029ch              _ptr
+     029eh              _IEEE754Val
+     02a6h              _strlen
+     02aeh              _Dval
+     02b2h              _newInt
+     02b4h              _keyBoard
+     02b5h              r304
+     02c4h              _LcdWriteString
+     02f0h              _whenLockStateTrue
+     0302h              _inputKeyBoardFull
+     0343h              _putValtoBuffer
+     0369h              _LcdClearLINE1
+     037fh              _readEEPROM
+     039fh              _writeEEPROM
+     03bfh              _setEEPROM
+     03eeh              _clipEEPROMBuffer
+     0416h              _builtin_holtek_divmodsi4_isr00
+     0425h              _builtin_holtek_udivmodsi4_isr00
+     0477h              _convInt32ToText
+     0526h              _LcdWriteIntToChar
+     0550h              _putValtoEEPROMBuffer
+     058bh              _getEEPROM
+     05e9h              _ScanKey
+     060bh              _changePassword
+     0635h              _getLockState
+     063ch              _getKeyBoard
+     071eh              _chaosMath
+     0de6h              _intiChaos
+     0e64h              _doMath
+     0f0eh              _getFormatKey
+     10a7h              _setBuzzerState
+     10b0h              _getBuzzerState
+     10b7h              _getBluetoothState
+     10beh              _LcdClear
+     10dbh              _LcdInit
+     1123h              _main
+     11f5h              _tryExecuteChaos
+     15d1h              _chaosPartOfMasterX1n
+     1765h              _chaosPartOfMasterU1
+     19bah              _tryLikeConnectChaos
+     1d82h              _LcdWriteChar
+     1da6h              _UARTTxData
+     1dd3h              _getOpenIRState
+     1ddah              _tryGetIeee754
+     1df1h              startup_value_1
      2000h              _tryExecuteChaosAllInOne
 
-Warning(L3009) : Same sub function exists between ISR(08H) CMG and MAIN CMG: _getLockState
-Warning(L3009) : Same sub function exists between ISR(08H) CMG and MAIN CMG: _LcdClearLINE2
-Warning(L3009) : Same sub function exists between ISR(08H) CMG and MAIN CMG: _LcdControl
-Warning(L3009) : Same sub function exists between ISR(08H) CMG and MAIN CMG: _delay
-Warning(L3009) : Same sub function exists between ISR(08H) CMG and MAIN CMG: _LcdWrite
-Warning(L3009) : Same sub function exists between ISR(08H) CMG and MAIN CMG: _setLockState
 
 ROM Usage Statistics
     Bank      Size      Used     Percentage
-     00h       2000h     1c6ch    88%
-     01h       2000h     075bh    22%
+     00h       2000h     1e0bh    93%
+     01h       2000h     075fh    23%
      02h       2000h     0000h    0%
      03h       2000h     0000h    0%
-     Total     8000h     23c7h    27%
+     Total     8000h     256ah    29%
 
 RAM Usage Statistics
     Bank      Size      Used     Percentage
      00h       0080h     0080h    100%
      01h       0080h     0080h    100%
-     02h       0080h     0029h    32%
+     02h       0080h     0036h    42%
      03h       0080h     0000h    0%
      04h       0080h     0000h    0%
      05h       0080h     0000h    0%
@@ -532,26 +552,16 @@ RAM Usage Statistics
      0dh       0080h     0000h    0%
      0eh       0080h     0000h    0%
      0fh       0080h     0000h    0%
-     Total     0800h     0129h    14%
+     Total     0800h     0136h    15%
 
 Use Stack Count
-_LcdClearLINE1: 3
 _LcdWriteChar: 3
-_LcdWriteIntToChar: 5
 _ISR_ExtINT0: 0
-_ISR_ExtINT1: 4
 _tryExecuteChaosAllInOne: 2
 _tryLikeConnectChaos: 3
-_main: 8
+_main: 10
 
 Call Tree
-    _LcdClearLINE1
-        _LcdControl (0)
-            _delay (1)
-                _builtin_holtek_delay_isr00 (2)
-        _LcdWrite (0)
-            _delay (1)
-                _builtin_holtek_delay_isr00 (2)
     _LcdWriteChar
         _LcdControl (0)
             _delay (1)
@@ -559,36 +569,8 @@ Call Tree
         _LcdWrite (0)
             _delay (1)
                 _builtin_holtek_delay_isr00 (2)
-    _LcdWriteIntToChar
-        _convInt32ToText (0)
-            _builtin_holtek_divmodsi4_isr00 (1)
-            _Crom2Prom (1)
-        _LcdWriteString (0)
-            _LcdControl (1)
-                _delay (2)
-                    _builtin_holtek_delay_isr00 (3)
-            _strlen (1)
-                _Crom2Prom (2)
-            _LcdWriteMany (1)
-                _Crom2Prom (2)
-                _LcdWrite (2)
-                    _delay (3)
-                        _builtin_holtek_delay_isr00 (4)
     @dummy4
         _ISR_ExtINT0 (0)
-    @dummy8
-        _ISR_ExtINT1 (0)
-            _getOpenIRState (1)
-            _getLockState (1)
-            _setBuzzerState (1)
-            _LcdClearLINE2 (1)
-                _LcdControl (2)
-                    _delay (3)
-                        _builtin_holtek_delay_isr00 (4)
-                _LcdWrite (2)
-                    _delay (3)
-                        _builtin_holtek_delay_isr00 (4)
-            _setLockState (1)
     _tryExecuteChaosAllInOne
         _builtin_holtek_dtsubadd (0)
             _builtin_holtek_dtdecode (1)
@@ -654,9 +636,11 @@ Call Tree
                     _LcdWrite (3)
                         _delay (4)
                             _builtin_holtek_delay_isr00 (5)
-            _delay (1)
-                _builtin_holtek_delay_isr00 (2)
             _getBluetoothState (1)
+            _getLockState (1)
+            _setLockState (1)
+            _getBuzzerState (1)
+            _setBuzzerState (1)
             _getFormatKey (1)
             _doMath (1)
                 _intiChaos (2)
@@ -674,7 +658,22 @@ Call Tree
                 _builtin_holtek_dtol (2)
                     _builtin_holtek_dtdecode (3)
                 _setLockState (2)
-            _setLockState (1)
+            _whenLockStateTrue (1)
+                _LcdWriteString (2)
+                    _LcdControl (3)
+                        _delay (4)
+                            _builtin_holtek_delay_isr00 (5)
+                    _strlen (3)
+                        _Crom2Prom (4)
+                    _LcdWriteMany (3)
+                        _Crom2Prom (4)
+                        _LcdWrite (4)
+                            _delay (5)
+                                _builtin_holtek_delay_isr00 (6)
+                _intiKeyBoard (2)
+                _setLockState (2)
+                _setDFalseLightState (2)
+                _setDTrueLightState (2)
             _ScanKey (1)
             _getKeyBoard (1)
                 _getLockState (2)
@@ -686,7 +685,81 @@ Call Tree
                         _delay (4)
                             _builtin_holtek_delay_isr00 (5)
                 _setLockState (2)
-                _ScanKey (2)
+                _setDFalseLightState (2)
+                _setDTrueLightState (2)
+                _changePassword (2)
+                    _LcdWriteString (3)
+                        _LcdControl (4)
+                            _delay (5)
+                                _builtin_holtek_delay_isr00 (6)
+                        _strlen (4)
+                            _Crom2Prom (5)
+                        _LcdWriteMany (4)
+                            _Crom2Prom (5)
+                            _LcdWrite (5)
+                                _delay (6)
+                                    _builtin_holtek_delay_isr00 (7)
+                    _ScanKey (3)
+                    _getEEPROM (3)
+                        _putValtoEEPROMBuffer (4)
+                            _LcdWriteIntToChar (5)
+                                _convInt32ToText (6)
+                                    _builtin_holtek_divmodsi4_isr00 (7)
+                                    _Crom2Prom (7)
+                                _LcdWriteString (6)
+                                    _LcdControl (7)
+                                        _delay (8)
+                                            _builtin_holtek_delay_isr00 (9)
+                                    _strlen (7)
+                                        _Crom2Prom (8)
+                                    _LcdWriteMany (7)
+                                        _Crom2Prom (8)
+                                        _LcdWrite (8)
+                                            _delay (9)
+                                                _builtin_holtek_delay_isr00 (10)
+                            _delay (5)
+                                _builtin_holtek_delay_isr00 (6)
+                        _clipEEPROMBuffer (4)
+                            _LcdClearLINE2 (5)
+                                _LcdControl (6)
+                                    _delay (7)
+                                        _builtin_holtek_delay_isr00 (8)
+                                _LcdWrite (6)
+                                    _delay (7)
+                                        _builtin_holtek_delay_isr00 (8)
+                        _delay (4)
+                            _builtin_holtek_delay_isr00 (5)
+                    _setEEPROM (3)
+                        _writeEEPROM (4)
+                            _Crom2Prom (5)
+                        _LcdClearLINE2 (4)
+                            _LcdControl (5)
+                                _delay (6)
+                                    _builtin_holtek_delay_isr00 (7)
+                            _LcdWrite (5)
+                                _delay (6)
+                                    _builtin_holtek_delay_isr00 (7)
+                        _LcdWriteString (4)
+                            _LcdControl (5)
+                                _delay (6)
+                                    _builtin_holtek_delay_isr00 (7)
+                            _strlen (5)
+                                _Crom2Prom (6)
+                            _LcdWriteMany (5)
+                                _Crom2Prom (6)
+                                _LcdWrite (6)
+                                    _delay (7)
+                                        _builtin_holtek_delay_isr00 (8)
+                        _delay (4)
+                            _builtin_holtek_delay_isr00 (5)
+                        _readEEPROM (4)
+                        _LcdClearLINE1 (4)
+                            _LcdControl (5)
+                                _delay (6)
+                                    _builtin_holtek_delay_isr00 (7)
+                            _LcdWrite (5)
+                                _delay (6)
+                                    _builtin_holtek_delay_isr00 (7)
                 _LcdWriteString (2)
                     _LcdControl (3)
                         _delay (4)
@@ -710,18 +783,24 @@ Call Tree
                             _LcdWrite (5)
                                 _delay (6)
                                     _builtin_holtek_delay_isr00 (7)
-                        _LcdWriteString (4)
-                            _LcdControl (5)
-                                _delay (6)
-                                    _builtin_holtek_delay_isr00 (7)
-                            _strlen (5)
-                                _Crom2Prom (6)
-                            _LcdWriteMany (5)
-                                _Crom2Prom (6)
-                                _LcdWrite (6)
+                        _setDFalseLightState (4)
+                        _setDTrueLightState (4)
+                        _whenLockStateTrue (4)
+                            _LcdWriteString (5)
+                                _LcdControl (6)
                                     _delay (7)
                                         _builtin_holtek_delay_isr00 (8)
-                        _setLockState (4)
+                                _strlen (6)
+                                    _Crom2Prom (7)
+                                _LcdWriteMany (6)
+                                    _Crom2Prom (7)
+                                    _LcdWrite (7)
+                                        _delay (8)
+                                            _builtin_holtek_delay_isr00 (9)
+                            _intiKeyBoard (5)
+                            _setLockState (5)
+                            _setDFalseLightState (5)
+                            _setDTrueLightState (5)
                     _delay (3)
                         _builtin_holtek_delay_isr00 (4)
                 _clipValtoBuffer (2)
@@ -737,4 +816,4 @@ Call Tree
 
 HLINK: Program entry point at section '@code' (address 0) of file 'C:\Users\user1801\Desktop\holtek2018\chaosTest0731\CHAOSTEST0731.OBJ'
 
-Total 0 error(s), Total 6 Warning(s)
+Total 0 error(s), Total 0 Warning(s)

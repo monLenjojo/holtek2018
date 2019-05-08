@@ -62,6 +62,7 @@ _Bool doMath(double Um, double xVal){
 	IntY1 = y1n*100000; 
 	IntX1 = xVal*100000; 
 	if(IntY1==IntX1){
+		//call setLockState(HIGH);
 		setLockState(HIGH);
 		return 1;
 	}else{
